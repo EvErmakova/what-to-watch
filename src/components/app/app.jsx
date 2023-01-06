@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import Catalog from "../catalog/catalog";
 
+const cardTitleHandler = () => {};
+
 const App = (props) => {
   const {movies} = props;
 
@@ -64,7 +66,7 @@ const App = (props) => {
       </section>
 
       <div className="page-content">
-        <Catalog movies={movies}/>
+        <Catalog movies={movies} onCardTitleClick={cardTitleHandler}/>
         <footer className="page-footer">
           <div className="logo">
             <a className="logo__link logo__link--light">

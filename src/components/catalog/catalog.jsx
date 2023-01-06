@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import MovieCard from "../movie-card/movie-card";
 
 const Catalog = (props) => {
-  const {movies} = props;
+  const {movies, onCardTitleClick} = props;
 
   return (
     <section className="catalog">
@@ -44,7 +44,7 @@ const Catalog = (props) => {
 
       <div className="catalog__movies-list">
         {movies.map((movie, index) => (
-          <MovieCard movie={movie} key={index}/>
+          <MovieCard movie={movie} key={index} onCardTitleClick={onCardTitleClick}/>
         ))}
       </div>
 
@@ -56,7 +56,8 @@ const Catalog = (props) => {
 };
 
 Catalog.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.string.isRequired)
+  movies: PropTypes.arrayOf(PropTypes.string.isRequired),
+  onCardTitleClick: PropTypes.func.isRequired
 };
 
 export default Catalog;
