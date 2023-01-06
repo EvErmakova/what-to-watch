@@ -3,16 +3,17 @@ import PropTypes from "prop-types";
 import {MoviesGenre} from "../../const";
 
 const MovieCard = (props) => {
-  const {movie: {title, image}, onCardTitleClick} = props;
+  const {movie, onHover} = props;
+  const {title, image} = movie;
 
   return (
-    <article className="small-movie-card catalog__movies-card">
+    <article className="small-movie-card catalog__movies-card" onMouseOver = {() => onHover(movie)}>
       <div className="small-movie-card__image">
         <img src={`img/` + image}
           alt={title} width="280" height="175"/>
       </div>
       <h3 className="small-movie-card__title">
-        <a className="small-movie-card__link" href="movie-page.html" onClick={onCardTitleClick}>
+        <a className="small-movie-card__link" href="movie-page.html">
           {title}
         </a>
       </h3>
@@ -27,7 +28,7 @@ MovieCard.propTypes = {
     genre: PropTypes.oneOf(Object.values(MoviesGenre)).isRequired,
     image: PropTypes.string.isRequired
   }).isRequired,
-  onCardTitleClick: PropTypes.func.isRequired
+  onHover: PropTypes.func.isRequired
 };
 
 export default MovieCard;

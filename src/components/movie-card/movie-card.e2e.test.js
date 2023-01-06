@@ -8,19 +8,17 @@ Enzyme.configure({
   adapter: new Adapter(),
 });
 
-it(`Should card title be pressed`, () => {
-  const cardTitleHandler = jest.fn();
+it(`Get active card, when we hover on it`, () => {
+  const onHover = jest.fn();
 
   const movieCard = shallow(
       <MovieCard
         movie={Movies[0]}
-        onCardTitleClick={cardTitleHandler}
+        onHover={onHover}
       />
   );
 
-  const cardTitle = movieCard.find(`a.small-movie-card__link`);
-
-  cardTitle.simulate(`click`);
-
-  expect(cardTitleHandler).toBeCalled();
+  const smallMovieCard = movieCard.find(`article.small-movie-card`);
+  smallMovieCard.simulate(`mouseOver`);
+  expect(smallMovieCard.exists).toBeTruthy();
 });

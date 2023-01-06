@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import MovieCard from "../movie-card/movie-card";
 import {MoviesGenre} from "../../const";
+import MoviesList from "../movies-list/movies-list";
 
 const Catalog = (props) => {
-  const {movies, onCardTitleClick} = props;
+  const {movies} = props;
 
   return (
     <section className="catalog">
@@ -43,11 +43,7 @@ const Catalog = (props) => {
         </li>
       </ul>
 
-      <div className="catalog__movies-list">
-        {movies.map((movie, index) => (
-          <MovieCard movie={movie} key={index} onCardTitleClick={onCardTitleClick}/>
-        ))}
-      </div>
+      <MoviesList movies={movies} />
 
       <div className="catalog__more">
         <button className="catalog__button" type="button">Show more</button>
@@ -62,8 +58,7 @@ Catalog.propTypes = {
     title: PropTypes.string.isRequired,
     genre: PropTypes.oneOf(Object.values(MoviesGenre)).isRequired,
     image: PropTypes.string.isRequired
-  }).isRequired),
-  onCardTitleClick: PropTypes.func.isRequired
+  }).isRequired)
 };
 
 export default Catalog;

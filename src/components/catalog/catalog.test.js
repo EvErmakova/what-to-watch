@@ -7,7 +7,6 @@ it(`Render Catalog with 4 cards`, () => {
   const catalog = renderer
     .create(<Catalog
       movies={Movies}
-      onCardTitleClick={() => {}}
     />)
     .toJSON();
 

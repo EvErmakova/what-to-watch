@@ -118,6 +118,7 @@ exports[`Render Catalog with 4 cards 1`] = `
   >
     <article
       className="small-movie-card catalog__movies-card"
+      onMouseOver={[Function]}
     >
       <div
         className="small-movie-card__image"
@@ -135,7 +136,6 @@ exports[`Render Catalog with 4 cards 1`] = `
         <a
           className="small-movie-card__link"
           href="movie-page.html"
-          onClick={[Function]}
         >
           Fantastic Beasts: The Crimes of Grindelwald
         </a>
@@ -143,6 +143,7 @@ exports[`Render Catalog with 4 cards 1`] = `
     </article>
     <article
       className="small-movie-card catalog__movies-card"
+      onMouseOver={[Function]}
     >
       <div
         className="small-movie-card__image"
@@ -150,7 +151,7 @@ exports[`Render Catalog with 4 cards 1`] = `
         <img
           alt="Bohemian Rhapsody"
           height="175"
-          src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+          src="img/bohemian-rhapsody.jpg"
           width="280"
         />
       </div>
@@ -160,7 +161,6 @@ exports[`Render Catalog with 4 cards 1`] = `
         <a
           className="small-movie-card__link"
           href="movie-page.html"
-          onClick={[Function]}
         >
           Bohemian Rhapsody
         </a>
@@ -168,6 +168,7 @@ exports[`Render Catalog with 4 cards 1`] = `
     </article>
     <article
       className="small-movie-card catalog__movies-card"
+      onMouseOver={[Function]}
     >
       <div
         className="small-movie-card__image"
@@ -175,7 +176,7 @@ exports[`Render Catalog with 4 cards 1`] = `
         <img
           alt="Macbeth"
           height="175"
-          src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+          src="img/macbeth.jpg"
           width="280"
         />
       </div>
@@ -185,7 +186,6 @@ exports[`Render Catalog with 4 cards 1`] = `
         <a
           className="small-movie-card__link"
           href="movie-page.html"
-          onClick={[Function]}
         >
           Macbeth
         </a>
@@ -193,6 +193,7 @@ exports[`Render Catalog with 4 cards 1`] = `
     </article>
     <article
       className="small-movie-card catalog__movies-card"
+      onMouseOver={[Function]}
     >
       <div
         className="small-movie-card__image"
@@ -200,7 +201,7 @@ exports[`Render Catalog with 4 cards 1`] = `
         <img
           alt="Aviator"
           height="175"
-          src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+          src="img/aviator.jpg"
           width="280"
         />
       </div>
@@ -210,7 +211,6 @@ exports[`Render Catalog with 4 cards 1`] = `
         <a
           className="small-movie-card__link"
           href="movie-page.html"
-          onClick={[Function]}
         >
           Aviator
         </a>

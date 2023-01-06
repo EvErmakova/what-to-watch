@@ -1,9 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Catalog from "../catalog/catalog";
 import {MoviesGenre} from "../../const";
-
-const cardTitleHandler = () => {};
+import Catalog from "../catalog/catalog";
 
 const App = (props) => {
   const {movies} = props;
@@ -67,7 +65,7 @@ const App = (props) => {
       </section>
 
       <div className="page-content">
-        <Catalog movies={movies} onCardTitleClick={cardTitleHandler}/>
+        <Catalog movies={movies}/>
         <footer className="page-footer">
           <div className="logo">
             <a className="logo__link logo__link--light">
