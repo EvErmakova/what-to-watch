@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import MovieCard from "../movie-card/movie-card";
+import {MoviesGenre} from "../../const";
 
 const Catalog = (props) => {
   const {movies, onCardTitleClick} = props;
@@ -56,7 +57,12 @@ const Catalog = (props) => {
 };
 
 Catalog.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.string.isRequired),
+  movies: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    genre: PropTypes.oneOf(Object.values(MoviesGenre)).isRequired,
+    image: PropTypes.string.isRequired
+  }).isRequired),
   onCardTitleClick: PropTypes.func.isRequired
 };
 

@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Catalog from "../catalog/catalog";
+import {MoviesGenre} from "../../const";
 
 const cardTitleHandler = () => {};
 
@@ -86,7 +87,12 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.string.isRequired)
+  movies: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    genre: PropTypes.oneOf(Object.values(MoviesGenre)).isRequired,
+    image: PropTypes.string.isRequired
+  }).isRequired)
 };
 
 export default App;
