@@ -20,5 +20,5 @@ it(`Get active card, when we hover on it`, () => {
 
   const smallMovieCard = movieCard.find(`article.small-movie-card`);
   smallMovieCard.simulate(`mouseOver`);
-  expect(smallMovieCard.exists).toBeTruthy();
+  expect(onHover).toHaveBeenLastCalledWith(Movies[0]);
 });
