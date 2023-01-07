@@ -10,17 +10,23 @@ export default class MoviesList extends PureComponent {
       activeMovie: null
     };
 
-    this.handleHover = this.handleHover.bind(this);
+    this._handleHover = this._handleHover.bind(this);
+  }
+
+  _handleHover(movie) {
+    this.setState({
+      activeMovie: movie
+    });
   }
 
   render() {
-    const {movies} = this.props;
+    const {movies, onCardTitleClick} = this.props;
 
     return (
       <React.Fragment>
         <div className="catalog__movies-list">
           {movies.map((movie) => (
-            <MovieCard movie={movie} key={movie.id} onHover={this.handleHover}/>
+            <MovieCard movie={movie} key={movie.id} onHover={this._handleHover} onCardTitleClick={onCardTitleClick}/>
           ))}
         </div>
 
@@ -30,12 +36,6 @@ export default class MoviesList extends PureComponent {
       </React.Fragment>
     );
   }
-
-  handleHover(movie) {
-    this.setState({
-      activeMovie: movie
-    });
-  }
 }
 
 MoviesList.propTypes = {
@@ -43,5 +43,6 @@ MoviesList.propTypes = {
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     picture: PropTypes.string.isRequired,
-  }).isRequired)
+  }).isRequired),
+  onCardTitleClick: PropTypes.func.isRequired
 };

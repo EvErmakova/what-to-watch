@@ -2,17 +2,18 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const MovieCard = (props) => {
-  const {movie, onHover} = props;
-  const {title, picture} = movie;
+  const {movie, onHover, onCardTitleClick} = props;
+  const {id, title, picture} = movie;
 
   return (
-    <article className="small-movie-card catalog__movies-card" onMouseOver = {() => onHover(movie)}>
+    <article className="small-movie-card catalog__movies-card" onMouseOver = {() => onHover(movie)}
+      onClick={() => onCardTitleClick(movie.id)}
+    >
       <div className="small-movie-card__image">
-        <img src={`img/` + picture}
-          alt={title} width="280" height="175"/>
+        <img src={`img/${picture}`} alt={title} width="280" height="175"/>
       </div>
       <h3 className="small-movie-card__title">
-        <a className="small-movie-card__link" href="movie-page.html">
+        <a className="small-movie-card__link" href={`/movie-page/${id}`}>
           {title}
         </a>
       </h3>
@@ -26,7 +27,8 @@ MovieCard.propTypes = {
     title: PropTypes.string.isRequired,
     picture: PropTypes.string.isRequired,
   }).isRequired,
-  onHover: PropTypes.func.isRequired
+  onHover: PropTypes.func.isRequired,
+  onCardTitleClick: PropTypes.func.isRequired
 };
 
 export default MovieCard;

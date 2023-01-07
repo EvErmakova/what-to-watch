@@ -6,14 +6,14 @@ import Header from "../header/header";
 import Footer from "../footer/footer";
 
 const Catalog = (props) => {
-  const {movies} = props;
+  const {movies, onCardTitleClick} = props;
   const promo = movies[0];
 
   return (
     <React.Fragment>
       <section className="movie-card">
         <div className="movie-card__bg">
-          <img src={`img/` + promo.picture} alt={promo.title}/>
+          <img src={`img/${promo.picture}`} alt={promo.title}/>
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -23,7 +23,7 @@ const Catalog = (props) => {
         <div className="movie-card__wrap">
           <div className="movie-card__info">
             <div className="movie-card__poster">
-              <img src={`img/` + promo.poster} alt={promo.title} width="218" height="327"/>
+              <img src={`img/${promo.poster}`} alt={promo.title} width="218" height="327"/>
             </div>
 
             <div className="movie-card__desc">
@@ -67,7 +67,7 @@ const Catalog = (props) => {
             ))}
           </ul>
 
-          <MoviesList movies={movies} />
+          <MoviesList movies={movies} onCardTitleClick={onCardTitleClick} />
         </section>
 
         <Footer />
@@ -84,7 +84,8 @@ Catalog.propTypes = {
     genre: PropTypes.string.isRequired,
     year: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
-  }).isRequired)
+  }).isRequired),
+  onCardTitleClick: PropTypes.func.isRequired
 };
 
 export default Catalog;

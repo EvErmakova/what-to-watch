@@ -102,18 +102,5 @@ export default [
     overview: `Paragraph 1 / Paragraph 2`,
     director: `Wes Andreson`,
     starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`]
-  },
-  {
-    id: `f08`,
-    title: `Johnny English`,
-    picture: `johnny-english.jpg`,
-    genre: `Comedy`,
-    year: `2003`,
-    poster: `the-grand-budapest-hotel-poster.jpg`,
-    ratingScore: 6.2,
-    ratingCount: 240,
-    overview: `Paragraph 1 / Paragraph 2`,
-    director: `Peter Howitt`,
-    starring: [`Rowan Atkinson`, `John Malkovich`, `Jude Law`, `Willem Dafoe`]
-  },
+  }
 ];

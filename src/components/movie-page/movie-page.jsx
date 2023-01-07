@@ -3,9 +3,10 @@ import PropTypes from "prop-types";
 import movies from "../../mocks/movies";
 import Header from "../header/header";
 import Footer from "../footer/footer";
+import MoviesList from "../movies-list/movies-list";
 
 const MoviePage = (props) => {
-  const {movie} = props;
+  const {movie, onCardTitleClick} = props;
   const similars = movies.slice(0, 4);
 
   const getRateText = (value) => {
@@ -29,7 +30,7 @@ const MoviePage = (props) => {
       <section className="movie-card movie-card--full">
         <div className="movie-card__hero">
           <div className="movie-card__bg">
-            <img src={`img/` + movie.picture} alt={movie.title}/>
+            <img src={`img/${movie.picture}`} alt={movie.title}/>
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -66,8 +67,7 @@ const MoviePage = (props) => {
         <div className="movie-card__wrap movie-card__translate-top">
           <div className="movie-card__info">
             <div className="movie-card__poster movie-card__poster--big">
-              <img src={`img/` + movie.poster} alt={movie.title} width="218"
-                height="327"/>
+              <img src={`img/${movie.poster}`} alt={movie.title} width="218" height="327"/>
             </div>
 
             <div className="movie-card__desc">
@@ -110,19 +110,7 @@ const MoviePage = (props) => {
       <div className="page-content">
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
-
-          <div className="catalog__movies-list">
-            {similars.map((movie) => (
-              <article className="small-movie-card catalog__movies-card" key={`similar-` + movie.id}>
-                <div className="small-movie-card__image">
-                  <img src={`img/` + movie.picture} alt={movie.title} width="280" height="175"/>
-                </div>
-                <h3 className="small-movie-card__title">
-                  <a className="small-movie-card__link" href="movie-page.html">{movie.title}</a>
-                </h3>
-              </article>
-            ))}
-          </div>
+          <MoviesList movies={similars} onCardTitleClick={onCardTitleClick} />
         </section>
 
         <Footer />
@@ -144,7 +132,8 @@ MoviePage.propTypes = {
     overview: PropTypes.string.isRequired,
     director: PropTypes.string.isRequired,
     starring: PropTypes.arrayOf(PropTypes.string).isRequired,
-  }).isRequired
+  }).isRequired,
+  onCardTitleClick: PropTypes.func.isRequired
 };
 
 export default MoviePage;
