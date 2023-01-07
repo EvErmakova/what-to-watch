@@ -1,6 +1,5 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
-import {MoviesGenre} from "../../const";
 import MovieCard from "../movie-card/movie-card";
 
 export default class MoviesList extends PureComponent {
@@ -15,12 +14,20 @@ export default class MoviesList extends PureComponent {
   }
 
   render() {
+    const {movies} = this.props;
+
     return (
-      <div className="catalog__movies-list">
-        {this.props.movies.map((movie, index) => (
-          <MovieCard movie={movie} key={index} onHover={this.handleHover}/>
-        ))}
-      </div>
+      <React.Fragment>
+        <div className="catalog__movies-list">
+          {movies.map((movie) => (
+            <MovieCard movie={movie} key={movie.id} onHover={this.handleHover}/>
+          ))}
+        </div>
+
+        <div className="catalog__more">
+          <button className="catalog__button" type="button">Show more</button>
+        </div>
+      </React.Fragment>
     );
   }
 
@@ -33,9 +40,8 @@ export default class MoviesList extends PureComponent {
 
 MoviesList.propTypes = {
   movies: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    genre: PropTypes.oneOf(Object.values(MoviesGenre)).isRequired,
-    image: PropTypes.string.isRequired
+    picture: PropTypes.string.isRequired,
   }).isRequired)
 };

@@ -1,15 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {MoviesGenre} from "../../const";
 
 const MovieCard = (props) => {
   const {movie, onHover} = props;
-  const {title, image} = movie;
+  const {title, picture} = movie;
 
   return (
     <article className="small-movie-card catalog__movies-card" onMouseOver = {() => onHover(movie)}>
       <div className="small-movie-card__image">
-        <img src={`img/` + image}
+        <img src={`img/` + picture}
           alt={title} width="280" height="175"/>
       </div>
       <h3 className="small-movie-card__title">
@@ -23,10 +22,9 @@ const MovieCard = (props) => {
 
 MovieCard.propTypes = {
   movie: PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    genre: PropTypes.oneOf(Object.values(MoviesGenre)).isRequired,
-    image: PropTypes.string.isRequired
+    picture: PropTypes.string.isRequired,
   }).isRequired,
   onHover: PropTypes.func.isRequired
 };
