@@ -44,13 +44,13 @@ const MovieCardHead = ({movie, pageType}) => {
 };
 
 MovieCardHead.propTypes = {
-  movie: {
+  movie: PropTypes.shape({
     title: PropTypes.string.isRequired,
     picture: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     year: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired
-  },
+  }).isRequired,
   pageType: PropTypes.string
 };
 

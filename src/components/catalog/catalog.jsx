@@ -7,11 +7,12 @@ import MovieCardHead from "../movie-card/movie-card-head";
 
 const Catalog = (props) => {
   const {movies, onCardTitleClick} = props;
+  const promo = movies[0];
 
   return (
     <React.Fragment>
       <section className="movie-card">
-        <MovieCardHead movie={movies[0]} />
+        <MovieCardHead movie={promo} />
       </section>
 
       <div className="page-content">

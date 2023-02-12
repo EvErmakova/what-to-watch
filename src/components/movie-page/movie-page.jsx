@@ -6,7 +6,7 @@ import MoviesList from "../movies-list/movies-list";
 import MovieCardHead from "../movie-card/movie-card-head";
 
 const MoviePage = (props) => {
-  const {movie, onCardTitleClick} = props;
+  const {movie} = props;
   const similar = movies.slice(0, 4);
 
   const getRateText = (value) => {
@@ -78,7 +78,7 @@ const MoviePage = (props) => {
       <div className="page-content">
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
-          <MoviesList movies={similar} onCardTitleClick={onCardTitleClick} />
+          <MoviesList movies={similar} />
         </section>
 
         <Footer />
@@ -100,8 +100,7 @@ MoviePage.propTypes = {
     overview: PropTypes.string.isRequired,
     director: PropTypes.string.isRequired,
     starring: PropTypes.arrayOf(PropTypes.string).isRequired,
-  }).isRequired,
-  onCardTitleClick: PropTypes.func.isRequired
+  }).isRequired
 };
 
 export default MoviePage;

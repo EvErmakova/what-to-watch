@@ -10,7 +10,8 @@ export default [
     ratingCount: 2040,
     overview: `Paragraph 1 / Paragraph 2`,
     director: `Wes Andreson`,
-    starring: [`Eddie Redmayne`, `Edward Norton`, `Jude Law`, `Willem Dafoe`]
+    starring: [`Eddie Redmayne`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     id: `f01`,
@@ -23,7 +24,8 @@ export default [
     ratingCount: 2040,
     overview: `Paragraph 1 / Paragraph 2`,
     director: `Wes Andreson`,
-    starring: [`Eddie Redmayne`, `Edward Norton`, `Jude Law`, `Willem Dafoe`]
+    starring: [`Eddie Redmayne`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     id: `f02`,
@@ -36,7 +38,8 @@ export default [
     ratingCount: 426,
     overview: `Paragraph 1 / Paragraph 2`,
     director: `Bryan Singer`,
-    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`]
+    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     id: `f03`,
@@ -49,7 +52,8 @@ export default [
     ratingCount: 194,
     overview: `Paragraph 1 / Paragraph 2`,
     director: `Wes Andreson`,
-    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`]
+    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     id: `f04`,
@@ -62,7 +66,8 @@ export default [
     ratingCount: 324,
     overview: `Paragraph 1 / Paragraph 2`,
     director: `Martin Scorcese`,
-    starring: [`Leonardo DiCaprio`, `Edward Norton`, `Jude Law`, `Willem Dafoe`]
+    starring: [`Leonardo DiCaprio`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     id: `f05`,
@@ -75,7 +80,8 @@ export default [
     ratingCount: 132,
     overview: `Paragraph 1 / Paragraph 2`,
     director: `Lynne Ramsy`,
-    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`]
+    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     id: `f06`,
@@ -88,7 +94,8 @@ export default [
     ratingCount: 147,
     overview: `Paragraph 1 / Paragraph 2`,
     director: `John Bill`,
-    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`]
+    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     id: `f07`,
@@ -101,6 +108,7 @@ export default [
     ratingCount: 240,
     overview: `Paragraph 1 / Paragraph 2`,
     director: `Wes Andreson`,
-    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`]
+    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   }
 ];

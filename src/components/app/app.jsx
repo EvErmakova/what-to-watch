@@ -27,10 +27,10 @@ export default class App extends PureComponent {
 
     if (movieId) {
       const selectedMovie = movies.find((movie) => movie.id === movieId);
-      return <MoviePage movie={selectedMovie} onCardTitleClick={this._onCardTitleClick}/>;
+      return <MoviePage movie={selectedMovie} />;
     }
 
-    return <Catalog movies={movies} onCardTitleClick={this._onCardTitleClick}/>;
+    return <Catalog movies={movies} onCardTitleClick={this._onCardTitleClick} />;
   }
 
   render() {
@@ -43,7 +43,7 @@ export default class App extends PureComponent {
             {this._renderMainScreen()}
           </Route>
           <Route exact path="/dev-film">
-            <MoviePage movie={movies[0]} onCardTitleClick={this._onCardTitleClick}/>
+            <MoviePage movie={movies[0]} />
           </Route>
         </Switch>
       </BrowserRouter>
