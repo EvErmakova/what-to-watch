@@ -16,9 +16,9 @@ export default class App extends PureComponent {
   }
 
   _onCardTitleClick(id) {
-    this.setState({
+    this.setState(() => ({
       movieId: id
-    });
+    }));
   }
 
   _renderMainScreen() {

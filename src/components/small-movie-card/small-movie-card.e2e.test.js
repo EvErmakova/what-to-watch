@@ -1,7 +1,7 @@
 import React from "react";
 import Enzyme, {shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import MovieCard from "./movie-card";
+import SmallMovieCard from "./small-movie-card";
 import Movies from "../../mocks/movies";
 
 Enzyme.configure({
@@ -12,7 +12,7 @@ it(`Get active card, when we hover on it`, () => {
   const onHover = jest.fn();
 
   const movieCard = shallow(
-      <MovieCard
+      <SmallMovieCard
         movie={Movies[0]}
         onHover={onHover}
       />

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const MovieCard = (props) => {
+const SmallMovieCard = (props) => {
   const {movie, onHover, onCardTitleClick} = props;
   const {id, title, picture} = movie;
 
@@ -21,7 +21,7 @@ const MovieCard = (props) => {
   );
 };
 
-MovieCard.propTypes = {
+SmallMovieCard.propTypes = {
   movie: PropTypes.shape({
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
@@ -31,4 +31,4 @@ MovieCard.propTypes = {
   onCardTitleClick: PropTypes.func.isRequired
 };
 
-export default MovieCard;
+export default SmallMovieCard;

@@ -1,13 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import movies from "../../mocks/movies";
-import Header from "../header/header";
 import Footer from "../footer/footer";
 import MoviesList from "../movies-list/movies-list";
+import MovieCardHead from "../movie-card/movie-card-head";
 
 const MoviePage = (props) => {
   const {movie, onCardTitleClick} = props;
-  const similars = movies.slice(0, 4);
+  const similar = movies.slice(0, 4);
 
   const getRateText = (value) => {
     if (value <= 3) {
@@ -29,39 +29,7 @@ const MoviePage = (props) => {
     <React.Fragment>
       <section className="movie-card movie-card--full">
         <div className="movie-card__hero">
-          <div className="movie-card__bg">
-            <img src={`img/${movie.picture}`} alt={movie.title}/>
-          </div>
-
-          <h1 className="visually-hidden">WTW</h1>
-
-          <Header />
-
-          <div className="movie-card__wrap">
-            <div className="movie-card__desc">
-              <h2 className="movie-card__title">{movie.title}</h2>
-              <p className="movie-card__meta">
-                <span className="movie-card__genre">{movie.genre}</span>
-                <span className="movie-card__year">{movie.year}</span>
-              </p>
-
-              <div className="movie-card__buttons">
-                <button className="btn btn--play movie-card__button" type="button">
-                  <svg viewBox="0 0 19 19" width="19" height="19">
-                    <use xlinkHref="#play-s"></use>
-                  </svg>
-                  <span>Play</span>
-                </button>
-                <button className="btn btn--list movie-card__button" type="button">
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"></use>
-                  </svg>
-                  <span>My list</span>
-                </button>
-                <a href="add-review.html" className="btn movie-card__button">Add review</a>
-              </div>
-            </div>
-          </div>
+          <MovieCardHead movie={movie} pageType="full" />
         </div>
 
         <div className="movie-card__wrap movie-card__translate-top">
@@ -110,7 +78,7 @@ const MoviePage = (props) => {
       <div className="page-content">
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
-          <MoviesList movies={similars} onCardTitleClick={onCardTitleClick} />
+          <MoviesList movies={similar} onCardTitleClick={onCardTitleClick} />
         </section>
 
         <Footer />

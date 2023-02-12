@@ -1,11 +1,11 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import Movies from "../../mocks/movies";
-import MovieCard from "./movie-card.jsx";
+import SmallMovieCard from "./small-movie-card.jsx";
 
-it(`Render MovieCard with title "Fantastic Beasts: The Crimes of Grindelwald"`, () => {
+it(`Render SmallMovieCard with title "Fantastic Beasts: The Crimes of Grindelwald"`, () => {
   const card = renderer
-    .create(<MovieCard
+    .create(<SmallMovieCard
       movie={Movies[0]}
       onHover={() => {}}
     />)

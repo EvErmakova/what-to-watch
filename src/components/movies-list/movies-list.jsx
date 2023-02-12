@@ -1,6 +1,6 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
-import MovieCard from "../movie-card/movie-card";
+import SmallMovieCard from "../small-movie-card/small-movie-card";
 
 export default class MoviesList extends PureComponent {
   constructor(props) {
@@ -14,9 +14,9 @@ export default class MoviesList extends PureComponent {
   }
 
   _handleHover(movie) {
-    this.setState({
+    this.setState(() => ({
       activeMovie: movie
-    });
+    }));
   }
 
   render() {
@@ -26,7 +26,7 @@ export default class MoviesList extends PureComponent {
       <React.Fragment>
         <div className="catalog__movies-list">
           {movies.map((movie) => (
-            <MovieCard movie={movie} key={movie.id} onHover={this._handleHover} onCardTitleClick={onCardTitleClick}/>
+            <SmallMovieCard movie={movie} key={movie.id} onHover={this._handleHover} onCardTitleClick={onCardTitleClick} />
           ))}
         </div>
 
