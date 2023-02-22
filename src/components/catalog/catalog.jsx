@@ -1,12 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {MoviesGenre} from "../../const";
+import {connect} from "react-redux";
+import MovieCardHead from "../movie-card/movie-card-head";
+import GenresList from "../genres-list/genres-list";
 import MoviesList from "../movies-list/movies-list";
 import Footer from "../footer/footer";
-import MovieCardHead from "../movie-card/movie-card-head";
 
 const Catalog = (props) => {
-  const {movies, onCardTitleClick} = props;
+  const {movies, filteredMovies, onCardTitleClick} = props;
   const promo = movies[0];
 
   return (
@@ -19,18 +20,9 @@ const Catalog = (props) => {
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-          <ul className="catalog__genres-list">
-            <li className="catalog__genres-item catalog__genres-item--active">
-              <a href="#" className="catalog__genres-link">All genres</a>
-            </li>
-            {Object.values(MoviesGenre).map((genre, index) => (
-              <li className="catalog__genres-item" key={`genre-` + index}>
-                <a href="#" className="catalog__genres-link">{genre}</a>
-              </li>
-            ))}
-          </ul>
+          <GenresList />
 
-          <MoviesList movies={movies} onCardTitleClick={onCardTitleClick} />
+          <MoviesList movies={filteredMovies} onCardTitleClick={onCardTitleClick} />
         </section>
 
         <Footer />
@@ -40,15 +32,15 @@ const Catalog = (props) => {
 };
 
 Catalog.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    picture: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    year: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-  }).isRequired),
+  movies: PropTypes.array.isRequired,
+  filteredMovies: PropTypes.array.isRequired,
   onCardTitleClick: PropTypes.func.isRequired
 };
 
-export default Catalog;
+const mapStateToProps = (state, ownProps) => ({
+  ownProps,
+  movies: state.movies,
+  filteredMovies: state.filteredMovies
+});
+
+export default connect(mapStateToProps)(Catalog);

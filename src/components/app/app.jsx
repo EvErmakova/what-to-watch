@@ -31,7 +31,7 @@ class App extends PureComponent {
       return <MoviePage movie={selectedMovie} />;
     }
 
-    return <Catalog movies={movies} onCardTitleClick={this._onCardTitleClick} />;
+    return <Catalog onCardTitleClick={this._onCardTitleClick} />;
   }
 
   render() {
@@ -53,19 +53,7 @@ class App extends PureComponent {
 }
 
 App.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    picture: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    year: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-    ratingScore: PropTypes.number.isRequired,
-    ratingCount: PropTypes.number.isRequired,
-    overview: PropTypes.string.isRequired,
-    director: PropTypes.string.isRequired,
-    starring: PropTypes.arrayOf(PropTypes.string).isRequired,
-  }).isRequired)
+  movies: PropTypes.array.isRequired
 };
 
 const mapStateToProps = (state) => ({

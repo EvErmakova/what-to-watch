@@ -1,41 +1,44 @@
 import Movies from "./mocks/movies";
 
-const SET_GENRE = `SET_GENRE`;
-const GET_FILTERED_MOVIES = `GET_FILTERED_MOVIES`;
-
-const initialState = {
-  genre: null,
-  movies: Movies
+const ActionType = {
+  SET_GENRE: `SET_GENRE`,
+  GET_FILTERED_MOVIES: `GET_FILTERED_MOVIES`
 };
 
-const actionCreator = {
+const initialState = {
+  genre: `all`,
+  movies: Movies,
+  filteredMovies: Movies
+};
+
+const ActionCreator = {
   setGenre: (genre) => ({
-    type: SET_GENRE,
+    type: ActionType.SET_GENRE,
     payload: genre
   }),
-  getFilteredMovies: () => ({
-    type: GET_FILTERED_MOVIES
+  filterMovies: () => ({
+    type: ActionType.GET_FILTERED_MOVIES
   })
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_GENRE:
-      return {
-        state,
-        genre: action.payload
-      };
+    case ActionType.SET_GENRE:
+      return Object.assign({}, state, {genre: action.payload});
 
-    case GET_FILTERED_MOVIES:
-      return {
-        genre: state.genre,
-        movies: initialState.movies.filter((item) => item.genre === state.genre)
-      };
+    case ActionType.GET_FILTERED_MOVIES:
+      let movies = initialState.movies;
+
+      if (state.genre !== `all`) {
+        movies = state.movies.filter((item) => item.genre === state.genre);
+      }
+
+      return Object.assign({}, state, {filteredMovies: movies});
 
     default:
       return state;
   }
 };
 
-export {actionCreator};
+export {ActionCreator};
 export default reducer;

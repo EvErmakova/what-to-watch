@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import movies from "../../mocks/movies";
+import {connect} from "react-redux";
 import Footer from "../footer/footer";
 import MoviesList from "../movies-list/movies-list";
 import MovieCardHead from "../movie-card/movie-card-head";
 
 const MoviePage = (props) => {
-  const {movie} = props;
+  const {movies, movie} = props;
   const similar = movies.slice(0, 4);
 
   const getRateText = (value) => {
@@ -100,7 +100,13 @@ MoviePage.propTypes = {
     overview: PropTypes.string.isRequired,
     director: PropTypes.string.isRequired,
     starring: PropTypes.arrayOf(PropTypes.string).isRequired,
-  }).isRequired
+  }).isRequired,
+  movies: PropTypes.array.isRequired
 };
 
-export default MoviePage;
+const MapStateToProps = (state, ownProps) => ({
+  ownProps,
+  movies: state.movies
+});
+
+export default connect(MapStateToProps)(MoviePage);

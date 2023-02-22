@@ -31,6 +31,7 @@
     "node": ">=12.0.0"
   },
   "dependencies": {
+    "@types/react": "^18.0.28",
     "prop-types": "15.8.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
