@@ -110,5 +110,33 @@ export default [
     director: `Wes Andreson`,
     starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
     preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+  },
+  {
+    id: `f08`,
+    title: `Dardjeeling Limited`,
+    picture: `dardjeeling-limited.jpg`,
+    genre: `Comedy`,
+    year: `2007`,
+    poster: `the-grand-budapest-hotel-poster.jpg`,
+    ratingScore: 4.3,
+    ratingCount: 240,
+    overview: `Paragraph 1 / Paragraph 2`,
+    director: `Wes Anderson`,
+    starring: [`Jason Schwartzman`, `Adrien Brody`],
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+  },
+  {
+    id: `f09`,
+    title: `Johnny English`,
+    picture: `johnny-english.jpg`,
+    genre: `Comedy`,
+    year: `2003`,
+    poster: `the-grand-budapest-hotel-poster.jpg`,
+    ratingScore: 4.3,
+    ratingCount: 240,
+    overview: `Paragraph 1 / Paragraph 2`,
+    director: `Peter Howitt`,
+    starring: [`Rowan Atkinson`, `Ben Miller`],
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   }
 ];

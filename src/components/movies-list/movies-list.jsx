@@ -23,17 +23,11 @@ export default class MoviesList extends PureComponent {
     const {movies, onCardTitleClick} = this.props;
 
     return (
-      <React.Fragment>
-        <div className="catalog__movies-list">
-          {movies.map((movie) => (
-            <SmallMovieCard movie={movie} key={movie.id} onHover={this._handleHover} onCardTitleClick={onCardTitleClick} />
-          ))}
-        </div>
-
-        <div className="catalog__more">
-          <button className="catalog__button" type="button">Show more</button>
-        </div>
-      </React.Fragment>
+      <div className="catalog__movies-list">
+        {movies.map((movie) => (
+          <SmallMovieCard movie={movie} key={movie.id} onHover={this._handleHover} onCardTitleClick={onCardTitleClick} />
+        ))}
+      </div>
     );
   }
 }

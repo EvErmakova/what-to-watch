@@ -2,13 +2,17 @@ import Movies from "./mocks/movies";
 
 const ActionType = {
   SET_GENRE: `SET_GENRE`,
-  GET_FILTERED_MOVIES: `GET_FILTERED_MOVIES`
+  FILTER_MOVIES: `FILTER_MOVIES`,
+  CHANGE_MOVIES_AMOUNT: `CHANGE_MOVIES_AMOUNT`
 };
+
+const amountStep = 8;
 
 const initialState = {
   genre: `all`,
   movies: Movies,
-  filteredMovies: Movies
+  filteredMovies: Movies,
+  maxMoviesAmount: amountStep
 };
 
 const ActionCreator = {
@@ -17,7 +21,10 @@ const ActionCreator = {
     payload: genre
   }),
   filterMovies: () => ({
-    type: ActionType.GET_FILTERED_MOVIES
+    type: ActionType.FILTER_MOVIES
+  }),
+  changeMoviesAmount: () => ({
+    type: ActionType.CHANGE_MOVIES_AMOUNT
   })
 };
 
@@ -26,14 +33,20 @@ const reducer = (state = initialState, action) => {
     case ActionType.SET_GENRE:
       return Object.assign({}, state, {genre: action.payload});
 
-    case ActionType.GET_FILTERED_MOVIES:
+    case ActionType.FILTER_MOVIES:
       let movies = initialState.movies;
 
       if (state.genre !== `all`) {
         movies = state.movies.filter((item) => item.genre === state.genre);
       }
 
-      return Object.assign({}, state, {filteredMovies: movies});
+      return Object.assign({}, state, {
+        filteredMovies: movies,
+        maxMoviesAmount: initialState.maxMoviesAmount
+      });
+
+    case ActionType.CHANGE_MOVIES_AMOUNT:
+      return Object.assign({}, state, {maxMoviesAmount: state.maxMoviesAmount + amountStep});
 
     default:
       return state;

@@ -5,9 +5,10 @@ import MovieCardHead from "../movie-card/movie-card-head";
 import GenresList from "../genres-list/genres-list";
 import MoviesList from "../movies-list/movies-list";
 import Footer from "../footer/footer";
+import {ActionCreator} from "../../reducer";
 
 const Catalog = (props) => {
-  const {movies, filteredMovies, onCardTitleClick} = props;
+  const {movies, filteredMovies, onCardTitleClick, onShowMore, maxMoviesAmount} = props;
   const promo = movies[0];
 
   return (
@@ -22,7 +23,11 @@ const Catalog = (props) => {
 
           <GenresList />
 
-          <MoviesList movies={filteredMovies} onCardTitleClick={onCardTitleClick} />
+          <MoviesList movies={filteredMovies.slice(0, maxMoviesAmount)} onCardTitleClick={onCardTitleClick} />
+
+          {filteredMovies.length > maxMoviesAmount && <div className="catalog__more">
+            <button className="catalog__button" type="button" onClick={onShowMore}>Show more</button>
+          </div>}
         </section>
 
         <Footer />
@@ -34,13 +39,20 @@ const Catalog = (props) => {
 Catalog.propTypes = {
   movies: PropTypes.array.isRequired,
   filteredMovies: PropTypes.array.isRequired,
-  onCardTitleClick: PropTypes.func.isRequired
+  onCardTitleClick: PropTypes.func.isRequired,
+  onShowMore: PropTypes.func.isRequired,
+  maxMoviesAmount: PropTypes.number.isRequired
 };
 
 const mapStateToProps = (state, ownProps) => ({
   ownProps,
   movies: state.movies,
-  filteredMovies: state.filteredMovies
+  filteredMovies: state.filteredMovies,
+  maxMoviesAmount: state.maxMoviesAmount
 });
 
-export default connect(mapStateToProps)(Catalog);
+const mapDispatchToProps = (dispatch) => ({
+  onShowMore: () => dispatch(ActionCreator.changeMoviesAmount())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Catalog);
