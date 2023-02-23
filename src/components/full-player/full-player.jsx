@@ -17,6 +17,7 @@ export default class FullPlayer extends PureComponent {
 
     this.onExitHandler = this.onExitHandler.bind(this);
     this.togglePlayHandler = this.togglePlayHandler.bind(this);
+    this.onProgressHandler = this.onProgressHandler.bind(this);
     this.fullScreenClickHandler = this.fullScreenClickHandler.bind(this);
     this.updateTime = this.updateTime.bind(this);
   }
@@ -54,6 +55,17 @@ export default class FullPlayer extends PureComponent {
     }
   }
 
+  onProgressHandler(evt) {
+    const currentTime = Math.trunc(evt.target.value * this.state.duration / 100);
+
+    this.setState((prevState) => ({
+      prevState,
+      currentTime
+    }));
+
+    this._videoRef.current.currentTime = currentTime;
+  }
+
   fullScreenClickHandler() {
     this._videoRef.current.requestFullscreen();
   }
@@ -61,7 +73,7 @@ export default class FullPlayer extends PureComponent {
   updateTime() {
     if (this._videoRef.current) {
       this.setState({
-        currentTime: Math.trunc(this._videoRef.current.currentTime),
+        currentTime: Math.trunc(this._videoRef.current.currentTime)
       });
     }
   }
@@ -82,8 +94,10 @@ export default class FullPlayer extends PureComponent {
         <div className="player__controls">
           <div className="player__controls-row">
             <div className="player__time">
-              <progress className="player__progress" value={progress} max="100"></progress>
-              <div className="player__toggler" style={{left: `${progress}%`}}>Toggler</div>
+              <input className="player__progress" type="range" min="0" max="100" value={progress}
+                style={{background: `linear-gradient(to right, #D9CD8D 0%, #D9CD8D ${progress}%, rgba(255, 251, 231, 0.35) ${progress}%, rgba(255, 251, 231, 0.35) 100%)`}}
+                onChange={this.onProgressHandler}
+              />
             </div>
             <div className="player__time-value">{elapsedTime}</div>
           </div>

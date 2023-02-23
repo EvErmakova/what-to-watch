@@ -1011,7 +1011,20 @@ main {
     background: rgba(255, 251, 231, 0.35); }
   .player__progress::-webkit-progress-value {
     background: #D9CD8D; }
-
+  .player__progress::-webkit-slider-thumb {
+    appearance: none;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    background: #D9CD8D;
+    cursor: pointer;
+    transition: background 0.15s ease-in-out; }
+    .player__progress::-webkit-slider-thumb:hover {
+      transform: scale(1.1);
+      background: #D9CD8D; }
+    .player__progress:active::-webkit-slider-thumb {
+      transform: scale(1.1);
+      background: #D9CD8D; }
 .player__time-value {
   width: 60px;
   -ms-flex-negative: 0;

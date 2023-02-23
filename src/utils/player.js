@@ -15,5 +15,5 @@ export const getPosition = (currentTime, duration) => {
   if (duration === 0) {
     return 0;
   }
-  return currentTime / duration * 100;
+  return Math.trunc(currentTime / duration * 100);
 };
