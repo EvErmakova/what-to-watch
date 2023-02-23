@@ -1,25 +1,36 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {Router, Route, Switch} from "react-router-dom";
+import {connect} from "react-redux";
+import {history} from "../../utils/history";
+import {AppRoutes} from "../../const";
 import MoviePage from "../movie-page/movie-page";
 import Catalog from "../catalog/catalog";
-import {connect} from "react-redux";
+import FullPlayer from "../full-player/full-player";
 
 const App = ({movies}) => {
   return (
-    <BrowserRouter>
+    <Router history={history}>
       <Switch>
-        <Route exact path="/">
+        <Route exact path={AppRoutes.ROOT}>
           <Catalog />
         </Route>
-        <Route exact path="/:movieId" render={
+
+        <Route exact path={`${AppRoutes.MOVIE_PAGE}/:movieId`} render={
           ({match}) => {
             const movie = movies.find((item) => item.id === match.params.movieId);
             return (<MoviePage movie={movie} />);
           }
         } />
+
+        <Route exact path={`${AppRoutes.PLAYER}/:movieId`} render={
+          ({match}) => {
+            const movie = movies.find((item) => item.id === match.params.movieId);
+            return (<FullPlayer movie={movie} />);
+          }
+        }/>
       </Switch>
-    </BrowserRouter>
+    </Router>
   );
 };
 

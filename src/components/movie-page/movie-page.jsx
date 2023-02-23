@@ -4,26 +4,12 @@ import {connect} from "react-redux";
 import Footer from "../footer/footer";
 import {MoviesList} from "../movies-list/movies-list";
 import MovieCardHead from "../movie-card/movie-card-head";
+import {similarCount} from "../../const";
+import {getRateText} from "../../utils/movie";
 
 const MoviePage = (props) => {
   const {movies, movie} = props;
-  const similar = movies.filter((item) => item.genre === movie.genre && item.id !== movie.id).slice(0, 4);
-
-  const getRateText = (value) => {
-    if (value <= 3) {
-      return `Bad`;
-    }
-    if (value <= 5) {
-      return `Normal`;
-    }
-    if (value <= 8) {
-      return `Good`;
-    }
-    if (value < 10) {
-      return `Very Good`;
-    }
-    return `Awesome`;
-  };
+  const similar = movies.filter((item) => item.genre === movie.genre && item.id !== movie.id).slice(0, similarCount);
 
   return (
     <React.Fragment>
@@ -35,7 +21,7 @@ const MoviePage = (props) => {
         <div className="movie-card__wrap movie-card__translate-top">
           <div className="movie-card__info">
             <div className="movie-card__poster movie-card__poster--big">
-              <img src={`img/${movie.poster}`} alt={movie.title} width="218" height="327"/>
+              <img src={`/img/${movie.poster}`} alt={movie.title} width="218" height="327"/>
             </div>
 
             <div className="movie-card__desc">

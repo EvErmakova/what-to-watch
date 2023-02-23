@@ -4,12 +4,12 @@ import PropTypes from "prop-types";
 import MovieCardButtons from "./movie-card-buttons";
 
 const MovieCardHead = ({movie, pageType}) => {
-  const {title, picture, genre, year, poster} = movie;
+  const {title, picture, genre, year, poster, id} = movie;
 
   const MoviePoster = () => {
     return (
       <div className="movie-card__poster">
-        <img src={`img/${poster}`} alt={title} width="218" height="327"/>
+        <img src={`/img/${poster}`} alt={title} width="218" height="327"/>
       </div>
     );
   };
@@ -17,7 +17,7 @@ const MovieCardHead = ({movie, pageType}) => {
   return (
     <Fragment>
       <div className="movie-card__bg">
-        <img src={`img/${picture}`} alt={title}/>
+        <img src={`/img/${picture}`} alt={title}/>
       </div>
 
       <h1 className="visually-hidden">WTW</h1>
@@ -35,7 +35,7 @@ const MovieCardHead = ({movie, pageType}) => {
               <span className="movie-card__year">{year}</span>
             </p>
 
-            <MovieCardButtons />
+            <MovieCardButtons movieId={id} />
           </div>
         </div>
       </div>
@@ -45,6 +45,7 @@ const MovieCardHead = ({movie, pageType}) => {
 
 MovieCardHead.propTypes = {
   movie: PropTypes.shape({
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     picture: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,

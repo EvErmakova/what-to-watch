@@ -29,7 +29,7 @@ export default class Player extends PureComponent {
     return (
       <video
         src={movie.preview}
-        poster={`img/${movie.picture}`}
+        poster={`/img/${movie.picture}`}
         muted
         ref = {this._videoRef}
         width="280" height="175"></video>

@@ -25,7 +25,9 @@ class GenresList extends PureComponent {
           <a href="#" className="catalog__genres-link" onClick={this._onGenreClick} data-genre="all">All genres</a>
         </li>
         {Object.values(genres).map((genre, index) => (
-          <li className={`catalog__genres-item ${activeGenre === genre ? `catalog__genres-item--active` : ``}`} key={`genre-` + index}>
+          <li className={`catalog__genres-item ${activeGenre === genre ? `catalog__genres-item--active` : ``}`}
+            key={`genre-` + index}
+          >
             <a href="#" className="catalog__genres-link" onClick={this._onGenreClick} data-genre={genre}>{genre}</a>
           </li>
         ))}

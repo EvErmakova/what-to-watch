@@ -1,0 +1,126 @@
+import React, {createRef, PureComponent} from "react";
+import {history} from "../../utils/history";
+import PropTypes from "prop-types";
+import {getPosition, getTimeElapsed} from "../../utils/player";
+
+export default class FullPlayer extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isPlaying: false,
+      currentTime: 0,
+      duration: 0,
+    };
+
+    this._videoRef = createRef();
+
+    this.onExitHandler = this.onExitHandler.bind(this);
+    this.togglePlayHandler = this.togglePlayHandler.bind(this);
+    this.fullScreenClickHandler = this.fullScreenClickHandler.bind(this);
+    this.updateTime = this.updateTime.bind(this);
+  }
+
+  componentDidMount() {
+    const video = this._videoRef.current;
+
+    if (video) {
+      video.ontimeupdate = this.updateTime;
+
+      video.onloadedmetadata = () =>
+        this.setState({
+          duration: Math.trunc(video.duration),
+        });
+    }
+  }
+
+  componentWillUnmount() {
+    this._videoRef.current.src = ``;
+  }
+
+  onExitHandler() {
+    history.goBack();
+  }
+
+  togglePlayHandler() {
+    this.setState((prevState) => ({
+      isPlaying: !prevState.isPlaying
+    }));
+
+    if (this.state.isPlaying) {
+      this._videoRef.current.pause();
+    } else {
+      this._videoRef.current.play();
+    }
+  }
+
+  fullScreenClickHandler() {
+    this._videoRef.current.requestFullscreen();
+  }
+
+  updateTime() {
+    if (this._videoRef.current) {
+      this.setState({
+        currentTime: Math.trunc(this._videoRef.current.currentTime),
+      });
+    }
+  }
+
+  render() {
+    const {title, picture, preview} = this.props.movie;
+    const {isPlaying, duration, currentTime} = this.state;
+
+    const elapsedTime = getTimeElapsed(duration, currentTime);
+    const progress = getPosition(currentTime, duration);
+
+    return (
+      <div className="player">
+        <video src={preview} className="player__video" poster={`/img/${picture}`} ref={this._videoRef}></video>
+
+        <button type="button" className="player__exit" onClick={this.onExitHandler}>Exit</button>
+
+        <div className="player__controls">
+          <div className="player__controls-row">
+            <div className="player__time">
+              <progress className="player__progress" value={progress} max="100"></progress>
+              <div className="player__toggler" style={{left: `${progress}%`}}>Toggler</div>
+            </div>
+            <div className="player__time-value">{elapsedTime}</div>
+          </div>
+
+          <div className="player__controls-row">
+            <button type="button" className="player__play" onClick={this.togglePlayHandler}>
+              {isPlaying ? (
+                <svg viewBox="0 0 19 19" width="19" height="19">
+                  <use xlinkHref="#pause"></use>
+                </svg>
+              ) : (
+                <svg viewBox="0 0 19 19" width="19" height="19">
+                  <use xlinkHref="#play-s"></use>
+                </svg>
+              )}
+              <span>Play</span>
+            </button>
+
+            <div className="player__name">{title}</div>
+
+            <button type="button" className="player__full-screen" onClick={this.fullScreenClickHandler}>
+              <svg viewBox="0 0 27 27" width="27" height="27">
+                <use xlinkHref="#full-screen"></use>
+              </svg>
+              <span>Full screen</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+FullPlayer.propTypes = {
+  movie: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    picture: PropTypes.string.isRequired,
+    preview: PropTypes.string.isRequired
+  }).isRequired
+};

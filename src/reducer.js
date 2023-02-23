@@ -1,12 +1,11 @@
 import Movies from "./mocks/movies";
+import {amountStep} from "./const";
 
 const ActionType = {
   SET_GENRE: `SET_GENRE`,
   FILTER_MOVIES: `FILTER_MOVIES`,
   CHANGE_MOVIES_AMOUNT: `CHANGE_MOVIES_AMOUNT`
 };
-
-const amountStep = 8;
 
 const initialState = {
   genre: `all`,

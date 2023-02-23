@@ -2,6 +2,7 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import Player from "../player/player";
 import {withRouter} from "react-router-dom";
+import {AppRoutes} from "../../const";
 
 export class SmallMovieCard extends PureComponent {
   constructor(props) {
@@ -16,9 +17,10 @@ export class SmallMovieCard extends PureComponent {
     this.handlerMouseLeave = this.handlerMouseLeave.bind(this);
   }
 
-  handlerCardClick() {
+  handlerCardClick(evt) {
+    evt.preventDefault();
     const {movie, history} = this.props;
-    history.push(`/${movie.id}`);
+    history.push(`${AppRoutes.MOVIE_PAGE}/${movie.id}`);
     window.scrollTo(0, 0);
   }
 
@@ -48,9 +50,9 @@ export class SmallMovieCard extends PureComponent {
           <Player movie={movie} isPlaying={isPlaying} />
         </div>
         <h3 className="small-movie-card__title">
-          <a className="small-movie-card__link" href={`/movie-page/${movie.id}`}>
+          <span className="small-movie-card__link">
             {movie.title}
-          </a>
+          </span>
         </h3>
       </article>
     );
