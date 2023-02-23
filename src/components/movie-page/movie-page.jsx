@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import Footer from "../footer/footer";
-import MoviesList from "../movies-list/movies-list";
+import {MoviesList} from "../movies-list/movies-list";
 import MovieCardHead from "../movie-card/movie-card-head";
 
 const MoviePage = (props) => {

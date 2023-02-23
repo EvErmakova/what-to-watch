@@ -1,8 +1,9 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import Player from "../player/player";
+import {withRouter} from "react-router-dom";
 
-export default class SmallMovieCard extends PureComponent {
+export class SmallMovieCard extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -10,12 +11,18 @@ export default class SmallMovieCard extends PureComponent {
       isPlaying: false
     };
 
+    this.handlerCardClick = this.handlerCardClick.bind(this);
     this.handlerMouseOver = this.handlerMouseOver.bind(this);
     this.handlerMouseLeave = this.handlerMouseLeave.bind(this);
   }
 
-  handlerMouseOver(movie) {
-    this.props.onHover(movie);
+  handlerCardClick() {
+    const {movie, history} = this.props;
+    history.push(`/${movie.id}`);
+    window.scrollTo(0, 0);
+  }
+
+  handlerMouseOver() {
     this.setState({
       isPlaying: true,
     });
@@ -28,14 +35,14 @@ export default class SmallMovieCard extends PureComponent {
   }
 
   render() {
-    const {movie, onCardTitleClick} = this.props;
+    const {movie} = this.props;
     const {isPlaying} = this.state;
 
     return (
       <article className="small-movie-card catalog__movies-card"
-        onClick={() => onCardTitleClick(movie.id)}
-        onMouseOver = {() => this.handlerMouseOver(movie)}
-        onMouseLeave={() => this.handlerMouseLeave()}
+        onClick={this.handlerCardClick}
+        onMouseOver={this.handlerMouseOver}
+        onMouseLeave={this.handlerMouseLeave}
       >
         <div className="small-movie-card__image">
           <Player movie={movie} isPlaying={isPlaying} />
@@ -57,6 +64,7 @@ SmallMovieCard.propTypes = {
     picture: PropTypes.string.isRequired,
     preview: PropTypes.string.isRequired
   }).isRequired,
-  onHover: PropTypes.func.isRequired,
-  onCardTitleClick: PropTypes.func.isRequired
+  history: PropTypes.object.isRequired
 };
+
+export default withRouter(SmallMovieCard);
