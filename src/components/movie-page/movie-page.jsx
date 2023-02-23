@@ -7,7 +7,7 @@ import MovieCardHead from "../movie-card/movie-card-head";
 
 const MoviePage = (props) => {
   const {movies, movie} = props;
-  const similar = movies.slice(0, 4);
+  const similar = movies.filter((item) => item.genre === movie.genre && item.id !== movie.id).slice(0, 4);
 
   const getRateText = (value) => {
     if (value <= 3) {
