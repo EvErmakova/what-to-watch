@@ -20,6 +20,7 @@ export default class FullPlayer extends PureComponent {
     this.onProgressHandler = this.onProgressHandler.bind(this);
     this.fullScreenClickHandler = this.fullScreenClickHandler.bind(this);
     this.updateTime = this.updateTime.bind(this);
+    this.onKeyHandler = this.onKeyHandler.bind(this);
   }
 
   componentDidMount() {
@@ -33,10 +34,27 @@ export default class FullPlayer extends PureComponent {
           duration: Math.trunc(video.duration),
         });
     }
+
+    document.addEventListener(`keydown`, this.onKeyHandler);
   }
 
   componentWillUnmount() {
     this._videoRef.current.src = ``;
+  }
+
+  onKeyHandler(evt) {
+    switch (evt.code) {
+      case `Escape`:
+        this.onExitHandler();
+        break;
+
+      case `Space`:
+        this.togglePlayHandler();
+        break;
+
+      default:
+        break;
+    }
   }
 
   onExitHandler() {
@@ -44,15 +62,19 @@ export default class FullPlayer extends PureComponent {
   }
 
   togglePlayHandler() {
-    this.setState((prevState) => ({
-      isPlaying: !prevState.isPlaying
-    }));
+    this.setState((prevState) => {
+      const video = this._videoRef.current;
 
-    if (this.state.isPlaying) {
-      this._videoRef.current.pause();
-    } else {
-      this._videoRef.current.play();
-    }
+      if (prevState.isPlaying) {
+        video.pause();
+      } else {
+        video.play();
+      }
+
+      return {
+        isPlaying: !prevState.isPlaying
+      };
+    });
   }
 
   onProgressHandler(evt) {
