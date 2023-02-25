@@ -2,7 +2,7 @@ import React, {PureComponent} from "react";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import {ActionCreator} from "../../reducer/app/app";
-import {getGenre} from "../../reducer/app/selectors";
+import {getGenre, getGenres} from "../../reducer/app/selectors";
 
 class GenresList extends PureComponent {
   constructor(props) {
@@ -43,8 +43,8 @@ GenresList.propTypes = {
   onSetGenre: PropTypes.func.isRequired
 };
 
-const mapStateToProps = (state, ownProps) => ({
-  ownProps,
+const mapStateToProps = (state) => ({
+  genres: getGenres(state),
   genre: getGenre(state),
 });
 

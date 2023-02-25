@@ -22,3 +22,15 @@ export const getMoviesByGenre = createSelector(
       return movies.filter((item) => item.genre === genre);
     }
 );
+
+export const getGenres = createSelector(
+    getMovies,
+    (movies) => [...new Set(movies.map((item) => item.genre))]
+);
+
+export const getFavoritesMovies = createSelector(
+    getMovies,
+    (movies) => {
+      return movies.filter((item) => item.isFavorite);
+    }
+);

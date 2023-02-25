@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import MovieCardButtons from "./movie-card-buttons";
 
 const MovieCardHead = ({movie, pageType}) => {
-  const {title, picture, genre, year, poster, id} = movie;
+  const {title, picture, genre, year, poster, id, isFavorite} = movie;
 
   const MoviePoster = () => {
     return (
@@ -30,7 +30,7 @@ const MovieCardHead = ({movie, pageType}) => {
               <span className="movie-card__year">{year}</span>
             </p>
 
-            <MovieCardButtons movieId={id} />
+            <MovieCardButtons movieId={id} isFavorite={isFavorite} />
           </div>
         </div>
       </div>
@@ -45,7 +45,8 @@ MovieCardHead.propTypes = {
     picture: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     year: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired
+    poster: PropTypes.string.isRequired,
+    isFavorite: PropTypes.bool.isRequired
   }).isRequired,
   pageType: PropTypes.string
 };

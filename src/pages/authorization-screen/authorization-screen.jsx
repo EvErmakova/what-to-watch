@@ -1,7 +1,7 @@
 import React, {createRef} from "react";
 import PropTypes from "prop-types";
-import Footer from "../footer/footer";
-import Header from "../header/header";
+import Header from "../../components/header/header";
+import Footer from "../../components/footer/footer";
 
 const AuthorizationScreen = (props) => {
   const {login} = props;
@@ -19,7 +19,7 @@ const AuthorizationScreen = (props) => {
 
   return (
     <div className="user-page">
-      <Header pageType="user"/>
+      <Header pageType="login" title="Sign in" />
 
       <div className="sign-in user-page__content">
         <form onSubmit={submitHandler} action="#" className="sign-in__form">

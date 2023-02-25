@@ -7,10 +7,11 @@ import {AppRoutes} from "../../const";
 import {getMovies} from "../../reducer/data/selectors";
 import {Operation as UserOperation} from "../../reducer/user/user";
 import {getAuthorizationStatus} from "../../reducer/user/selectors";
-import MoviePage from "../movie-page/movie-page";
-import Catalog from "../catalog/catalog";
-import FullPlayer from "../full-player/full-player";
-import AuthorizationScreen from "../authorization-screen/authorization-screen";
+import Catalog from "../../pages/catalog/catalog";
+import AuthorizationScreen from "../../pages/authorization-screen/authorization-screen";
+import MoviePage from "../../pages/movie-page/movie-page";
+import FullPlayer from "../../pages/full-player/full-player";
+import MyListScreen from "../../pages/my-list-screen/my-list-screen";
 
 const App = ({movies, isLogin, login}) => {
   return (
@@ -21,9 +22,7 @@ const App = ({movies, isLogin, login}) => {
         </Route>
 
         <Route exact path={AppRoutes.LOGIN}
-          render={()=>
-            isLogin ? <Redirect to={AppRoutes.ROOT}/> : <AuthorizationScreen login={login}/>
-          }
+          render={() => isLogin ? <Redirect to={AppRoutes.ROOT}/> : <AuthorizationScreen login={login}/>}
         />
 
         <Route exact path={`${AppRoutes.MOVIE_PAGE}/:movieId`} render={
@@ -39,6 +38,10 @@ const App = ({movies, isLogin, login}) => {
             return (<FullPlayer movie={movie}/>);
           }
         }/>
+
+        <Route exact path={AppRoutes.MY_LIST}
+          render={() => isLogin ? <MyListScreen /> : <Redirect to={AppRoutes.LOGIN}/>}
+        />
       </Switch>
     </Router>
   );

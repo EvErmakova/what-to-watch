@@ -13,7 +13,8 @@ export default [
     director: `Wes Andreson`,
     starring: [`Eddie Redmayne`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
     previewVideo: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
-    videoLink: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
+    videoLink: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    isFavorite: false
   },
   {
     id: `f01`,
@@ -29,7 +30,8 @@ export default [
     director: `Wes Andreson`,
     starring: [`Eddie Redmayne`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
     previewVideo: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
-    videoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+    videoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    isFavorite: true
   },
   {
     id: `f02`,
@@ -45,7 +47,8 @@ export default [
     director: `Bryan Singer`,
     starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
     previewVideo: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
-    videoLink: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
+    videoLink: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    isFavorite: false
   },
   {
     id: `f03`,
@@ -61,7 +64,8 @@ export default [
     director: `Wes Andreson`,
     starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
     previewVideo: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
-    videoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+    videoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    isFavorite: true
   },
   {
     id: `f04`,
@@ -77,7 +81,8 @@ export default [
     director: `Martin Scorcese`,
     starring: [`Leonardo DiCaprio`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
     previewVideo: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
-    videoLink: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
+    videoLink: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    isFavorite: false
   },
   {
     id: `f05`,
@@ -93,7 +98,8 @@ export default [
     director: `Lynne Ramsy`,
     starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
     previewVideo: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
-    videoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+    videoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    isFavorite: false
   },
   {
     id: `f06`,
@@ -109,7 +115,8 @@ export default [
     director: `John Bill`,
     starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
     previewVideo: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
-    videoLink: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
+    videoLink: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    isFavorite: false
   },
   {
     id: `f07`,
@@ -125,7 +132,8 @@ export default [
     director: `Wes Andreson`,
     starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
     previewVideo: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
-    videoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+    videoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    isFavorite: false
   },
   {
     id: `f08`,
@@ -141,7 +149,8 @@ export default [
     director: `Wes Anderson`,
     starring: [`Jason Schwartzman`, `Adrien Brody`],
     previewVideo: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
-    videoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+    videoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    isFavorite: false
   },
   {
     id: `f09`,
@@ -157,6 +166,7 @@ export default [
     director: `Peter Howitt`,
     starring: [`Rowan Atkinson`, `Ben Miller`],
     previewVideo: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
-    videoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+    videoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    isFavorite: true
   }
 ];

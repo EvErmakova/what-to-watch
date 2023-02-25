@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import {getAuthorizationStatus} from "../../reducer/user/selectors";
 import {connect} from "react-redux";
 
-const MovieCardButtons = ({movieId, isLogin}) => {
+const MovieCardButtons = ({movieId, isFavorite, isLogin}) => {
   return (
     <div className="movie-card__buttons">
       <Link to={`${AppRoutes.PLAYER}/${movieId}`} className="btn btn--play movie-card__button" type="button">
@@ -18,9 +18,15 @@ const MovieCardButtons = ({movieId, isLogin}) => {
       {isLogin &&
         <Fragment>
           <button className="btn btn--list movie-card__button" type="button">
-            <svg viewBox="0 0 19 20" width="19" height="20">
-              <use xlinkHref="#add"></use>
-            </svg>
+            {isFavorite ?
+              <svg viewBox="0 0 18 14" width="18" height="14">
+                <use xlinkHref="#in-list"></use>
+              </svg>
+              :
+              <svg viewBox="0 0 19 20" width="19" height="20">
+                <use xlinkHref="#add"></use>
+              </svg>
+            }
             <span>My list</span>
           </button>
 
@@ -33,6 +39,7 @@ const MovieCardButtons = ({movieId, isLogin}) => {
 
 MovieCardButtons.propTypes = {
   movieId: PropTypes.string.isRequired,
+  isFavorite: PropTypes.bool.isRequired,
   isLogin: PropTypes.bool.isRequired,
 };
 

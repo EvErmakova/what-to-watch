@@ -6,10 +6,11 @@ import {AppRoutes} from "../../const";
 import {getAuthorizationStatus} from "../../reducer/user/selectors";
 import Logo from "../logo/logo";
 
-const Header = ({pageType, isLogin}) => {
+const Header = ({pageType, title, isLogin}) => {
   const headerClass = () => {
     switch (pageType) {
-      case `user`:
+      case `login`:
+      case `user-list`:
         return `user-page__head`;
       case `movie`:
         return `movie-card__head`;
@@ -20,7 +21,7 @@ const Header = ({pageType, isLogin}) => {
 
   const Avatar = () => (
     <div className="user-block__avatar">
-      <img src="/img/avatar.jpg" alt="User avatar" width="63" height="63"/>
+      <Link to={AppRoutes.MY_LIST}><img src="/img/avatar.jpg" alt="User avatar" width="63" height="63"/></Link>
     </div>
   );
 
@@ -28,11 +29,12 @@ const Header = ({pageType, isLogin}) => {
     <header className={`page-header ${headerClass()}`}>
       <Logo />
 
-      {pageType === `movie` ?
+      {title && <h1 className="page-title user-page__title">{title}</h1>}
+
+      {pageType !== `login` &&
         <div className="user-block">
           {isLogin ? <Avatar /> : <Link to={AppRoutes.LOGIN} className="user-block__link">Sign in</Link>}
         </div>
-        : <h1 className="page-title user-page__title">Sign in</h1>
       }
     </header>
   );
@@ -40,6 +42,7 @@ const Header = ({pageType, isLogin}) => {
 
 Header.propTypes = {
   pageType: PropTypes.string,
+  title: PropTypes.string,
   isLogin: PropTypes.bool.isRequired,
 };
 

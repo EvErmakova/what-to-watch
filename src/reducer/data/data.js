@@ -9,23 +9,7 @@ const initialState = {
 };
 
 const adapter = (data) => {
-  return data.map((movie) => ({
-    id: movie.id.toString(),
-    title: movie.name,
-    picture: movie.backgroundImage,
-    genre: movie.genre,
-    year: movie.released.toString(),
-    poster: movie.posterImage,
-    ratingScore: movie.rating,
-    ratingCount: movie.scoresCount,
-    overview: movie.description,
-    director: movie.director,
-    starring: movie.starring,
-    previewImage: movie.previewImage,
-    previewVideo: movie.previewVideoLink,
-    videoLink: movie.videoLink,
-    background: movie.backgroundColor
-  }));
+  return data.map((movie) => movieAdapter(movie));
 };
 
 const movieAdapter = (movie) => ({
@@ -43,7 +27,8 @@ const movieAdapter = (movie) => ({
   previewImage: movie.previewImage,
   previewVideo: movie.previewVideoLink,
   videoLink: movie.videoLink,
-  background: movie.backgroundColor
+  background: movie.backgroundColor,
+  isFavorite: movie.isFavorite
 });
 
 const Operation = {

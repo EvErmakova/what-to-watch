@@ -4,10 +4,10 @@ import {connect} from "react-redux";
 import {getMovies} from "../../reducer/data/selectors";
 import {similarCount} from "../../const";
 import {getRateText} from "../../utils/movie";
-import Header from "../header/header";
-import MoviesList from "../movies-list/movies-list";
-import MovieCardHead from "../movie-card/movie-card-head";
-import Footer from "../footer/footer";
+import Header from "../../components/header/header";
+import MovieCardHead from "../../components/movie-card/movie-card-head";
+import MoviesList from "../../components/movies-list/movies-list";
+import Footer from "../../components/footer/footer";
 
 const MoviePage = (props) => {
   const {movies, movie} = props;
