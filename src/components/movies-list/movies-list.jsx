@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import SmallMovieCard from "../small-movie-card/small-movie-card";
 
-export const MoviesList = ({movies}) => (
+const MoviesList = ({movies}) => (
   <div className="catalog__movies-list">
     {movies.map((movie) => (
       <SmallMovieCard movie={movie} key={movie.id} />
@@ -17,3 +17,5 @@ MoviesList.propTypes = {
     picture: PropTypes.string.isRequired,
   }).isRequired),
 };
+
+export default MoviesList;

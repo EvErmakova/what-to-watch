@@ -1,8 +1,8 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
-import Player from "../player/player";
 import {withRouter} from "react-router-dom";
 import {AppRoutes} from "../../const";
+import Player from "../player/player";
 
 export class SmallMovieCard extends PureComponent {
   constructor(props) {

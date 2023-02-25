@@ -7,8 +7,13 @@ import {AppRoutes} from "../../const";
 import MoviePage from "../movie-page/movie-page";
 import Catalog from "../catalog/catalog";
 import FullPlayer from "../full-player/full-player";
+import AuthorizationScreen from "../authorization-screen/authorization-screen";
 
-const App = ({movies}) => {
+const App = ({movies, isAuthorizationRequired}) => {
+  if (isAuthorizationRequired) {
+    return <AuthorizationScreen />;
+  }
+
   if (movies.length) {
     return (
       <Router history={history}>
@@ -39,11 +44,13 @@ const App = ({movies}) => {
 };
 
 App.propTypes = {
-  movies: PropTypes.array.isRequired
+  movies: PropTypes.array.isRequired,
+  isAuthorizationRequired: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = (state) => ({
-  movies: state.movies
+  movies: state.movies,
+  isAuthorizationRequired: state.isAuthorizationRequired
 });
 
 export default connect(mapStateToProps)(App);

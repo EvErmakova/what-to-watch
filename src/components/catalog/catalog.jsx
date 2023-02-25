@@ -2,9 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer";
+import Header from "../header/header";
 import MovieCardHead from "../movie-card/movie-card-head";
 import GenresList from "../genres-list/genres-list";
-import {MoviesList} from "../movies-list/movies-list";
+import MoviesList from "../movies-list/movies-list";
 import Footer from "../footer/footer";
 
 const Catalog = (props) => {
@@ -14,6 +15,9 @@ const Catalog = (props) => {
   return (
     <React.Fragment>
       <section className="movie-card">
+        <h1 className="visually-hidden">WTW</h1>
+        <Header isAuth={true} pageType="movie" />
+
         <MovieCardHead movie={promo} />
       </section>
 

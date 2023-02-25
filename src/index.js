@@ -6,12 +6,15 @@ import thunk from "redux-thunk";
 import {compose} from "recompose";
 import reducer, {Operation} from "./reducer";
 import App from "./components/app/app";
+import {createAPI} from "./api";
 
 const init = () => {
+  const api = createAPI((...args) => store.dispatch(...args));
+
   const store = createStore(
       reducer,
       compose(
-          applyMiddleware(thunk),
+          applyMiddleware(thunk.withExtraArgument(api)),
           window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
       )
   );

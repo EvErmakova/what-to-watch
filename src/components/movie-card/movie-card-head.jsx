@@ -1,5 +1,4 @@
 import React, {Fragment} from "react";
-import Header from "../header/header";
 import PropTypes from "prop-types";
 import MovieCardButtons from "./movie-card-buttons";
 
@@ -19,10 +18,6 @@ const MovieCardHead = ({movie, pageType}) => {
       <div className="movie-card__bg">
         <img src={picture} alt={title}/>
       </div>
-
-      <h1 className="visually-hidden">WTW</h1>
-
-      <Header />
 
       <div className="movie-card__wrap">
         <div className="movie-card__info">

@@ -1,11 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import Footer from "../footer/footer";
-import {MoviesList} from "../movies-list/movies-list";
-import MovieCardHead from "../movie-card/movie-card-head";
 import {similarCount} from "../../const";
 import {getRateText} from "../../utils/movie";
+import Header from "../header/header";
+import MoviesList from "../movies-list/movies-list";
+import MovieCardHead from "../movie-card/movie-card-head";
+import Footer from "../footer/footer";
 
 const MoviePage = (props) => {
   const {movies, movie} = props;
@@ -13,8 +14,11 @@ const MoviePage = (props) => {
 
   return (
     <React.Fragment>
-      <section className="movie-card movie-card--full">
+      <section className="movie-card movie-card--full" style={{backgroundColor: movie.background}}>
         <div className="movie-card__hero">
+          <h1 className="visually-hidden">WTW</h1>
+          <Header isAuth={true} pageType="movie" />
+
           <MovieCardHead movie={movie} pageType="full" />
         </div>
 
@@ -86,6 +90,7 @@ MoviePage.propTypes = {
     overview: PropTypes.string.isRequired,
     director: PropTypes.string.isRequired,
     starring: PropTypes.arrayOf(PropTypes.string).isRequired,
+    background: PropTypes.string
   }).isRequired,
   movies: PropTypes.array.isRequired
 };

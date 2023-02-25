@@ -1,18 +1,19 @@
 import {amountStep} from "./const";
-import api from "./api";
 
 const ActionType = {
   SET_GENRE: `SET_GENRE`,
   FILTER_MOVIES: `FILTER_MOVIES`,
   CHANGE_MOVIES_AMOUNT: `CHANGE_MOVIES_AMOUNT`,
-  LOAD_MOVIES: `LOAD_MOVIES`
+  LOAD_MOVIES: `LOAD_MOVIES`,
+  REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
 };
 
 const initialState = {
   genre: `all`,
   movies: [],
   filteredMovies: [],
-  maxMoviesAmount: amountStep
+  maxMoviesAmount: amountStep,
+  isAuthorizationRequired: false
 };
 
 const adapter = (data) => {
@@ -31,11 +32,12 @@ const adapter = (data) => {
     previewImage: movie.previewImage,
     previewVideo: movie.previewVideoLink,
     videoLink: movie.videoLink,
+    background: movie.backgroundColor
   }));
 };
 
 const Operation = {
-  loadMovies: () => (dispatch) => {
+  loadMovies: () => (dispatch, _getState, api) => {
     return api.get(`/films`)
       .then((response) => {
         const getDataFromAdapter = adapter(response.data);
@@ -59,7 +61,13 @@ const ActionCreator = {
   }),
   changeMoviesAmount: () => ({
     type: ActionType.CHANGE_MOVIES_AMOUNT
-  })
+  }),
+  requireAuthorization: (status) => {
+    return {
+      type: ActionType.REQUIRED_AUTHORIZATION,
+      payload: status,
+    };
+  },
 };
 
 const reducer = (state = initialState, action) => {
@@ -84,6 +92,9 @@ const reducer = (state = initialState, action) => {
 
     case ActionType.CHANGE_MOVIES_AMOUNT:
       return Object.assign({}, state, {maxMoviesAmount: state.maxMoviesAmount + amountStep});
+
+    case ActionType.REQUIRED_AUTHORIZATION:
+      return Object.assign({}, state, {isAuthorizationRequired: action.payload});
 
     default:
       return state;
