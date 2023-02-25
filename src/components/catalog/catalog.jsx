@@ -1,7 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../reducer";
+import {ActionCreator} from "../../reducer/app/app";
+import {getMovies, getPromo} from "../../reducer/data/selectors";
+import {getMoviesByGenre, getMaxMoviesAmount} from "../../reducer/app/selectors";
+import {getAllGenres} from "../../utils/movie";
 import Header from "../header/header";
 import MovieCardHead from "../movie-card/movie-card-head";
 import GenresList from "../genres-list/genres-list";
@@ -9,8 +12,7 @@ import MoviesList from "../movies-list/movies-list";
 import Footer from "../footer/footer";
 
 const Catalog = (props) => {
-  const {movies, filteredMovies, onShowMore, maxMoviesAmount} = props;
-  const promo = movies[0];
+  const {movies, moviesByGenre, promo, onShowMore, maxMoviesAmount} = props;
 
   return (
     <React.Fragment>
@@ -18,18 +20,18 @@ const Catalog = (props) => {
         <h1 className="visually-hidden">WTW</h1>
         <Header isAuth={true} pageType="movie" />
 
-        <MovieCardHead movie={promo} />
+        {promo && <MovieCardHead movie={promo} />}
       </section>
 
       <div className="page-content">
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-          <GenresList />
+          <GenresList genres={getAllGenres(movies)} />
 
-          <MoviesList movies={filteredMovies.slice(0, maxMoviesAmount)} />
+          <MoviesList movies={moviesByGenre.slice(0, maxMoviesAmount)} />
 
-          {filteredMovies.length > maxMoviesAmount && <div className="catalog__more">
+          {moviesByGenre.length > maxMoviesAmount && <div className="catalog__more">
             <button className="catalog__button" type="button" onClick={onShowMore}>Show more</button>
           </div>}
         </section>
@@ -42,16 +44,17 @@ const Catalog = (props) => {
 
 Catalog.propTypes = {
   movies: PropTypes.array.isRequired,
-  filteredMovies: PropTypes.array.isRequired,
+  moviesByGenre: PropTypes.array.isRequired,
+  promo: PropTypes.object.isRequired,
   onShowMore: PropTypes.func.isRequired,
   maxMoviesAmount: PropTypes.number.isRequired
 };
 
-const mapStateToProps = (state, ownProps) => ({
-  ownProps,
-  movies: state.movies,
-  filteredMovies: state.filteredMovies,
-  maxMoviesAmount: state.maxMoviesAmount
+const mapStateToProps = (state) => ({
+  movies: getMovies(state),
+  moviesByGenre: getMoviesByGenre(state),
+  promo: getPromo(state),
+  maxMoviesAmount: getMaxMoviesAmount(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({

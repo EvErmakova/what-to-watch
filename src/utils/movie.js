@@ -15,3 +15,5 @@ export const getRateText = (value) => {
   }
   return TextRates.AWESOME;
 };
+
+export const getAllGenres = (movies) => [...new Set(movies.map((item) => item.genre))];

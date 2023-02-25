@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
+import {getMovies} from "../../reducer/data/selectors";
 import {similarCount} from "../../const";
 import {getRateText} from "../../utils/movie";
 import Header from "../header/header";
@@ -97,7 +98,7 @@ MoviePage.propTypes = {
 
 const MapStateToProps = (state, ownProps) => ({
   ownProps,
-  movies: state.movies
+  movies: getMovies(state)
 });
 
 export default connect(MapStateToProps)(MoviePage);

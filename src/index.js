@@ -4,9 +4,10 @@ import {createStore, applyMiddleware} from "redux";
 import {Provider} from "react-redux";
 import thunk from "redux-thunk";
 import {compose} from "recompose";
-import reducer, {Operation} from "./reducer";
-import App from "./components/app/app";
+import reducer from "./reducer";
+import {Operation} from "./reducer/data/data";
 import {createAPI} from "./api";
+import App from "./components/app/app";
 
 const init = () => {
   const api = createAPI((...args) => store.dispatch(...args));
@@ -20,6 +21,7 @@ const init = () => {
   );
 
   store.dispatch(Operation.loadMovies());
+  store.dispatch(Operation.loadPromo());
 
   ReactDOM.render(
       <Provider store={store}>

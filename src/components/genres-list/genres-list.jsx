@@ -1,7 +1,8 @@
 import React, {PureComponent} from "react";
-import {ActionCreator} from "../../reducer";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
+import {ActionCreator} from "../../reducer/app/app";
+import {getGenre} from "../../reducer/app/selectors";
 
 class GenresList extends PureComponent {
   constructor(props) {
@@ -16,7 +17,7 @@ class GenresList extends PureComponent {
   }
 
   render() {
-    const genres = [...new Set(this.props.movies.map((item) => item.genre))];
+    const genres = this.props.genres;
     const activeGenre = this.props.genre;
 
     return (
@@ -38,21 +39,18 @@ class GenresList extends PureComponent {
 
 GenresList.propTypes = {
   genre: PropTypes.string.isRequired,
-  movies: PropTypes.arrayOf(PropTypes.shape({
-    genre: PropTypes.string.isRequired,
-  }).isRequired),
+  genres: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   onSetGenre: PropTypes.func.isRequired
 };
 
-const mapStateToProps = (state) => ({
-  genre: state.genre,
-  movies: state.movies
+const mapStateToProps = (state, ownProps) => ({
+  ownProps,
+  genre: getGenre(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onSetGenre: (genre) => {
     dispatch(ActionCreator.setGenre(genre));
-    dispatch(ActionCreator.filterMovies());
   }
 });
 

@@ -4,6 +4,8 @@ import {Router, Route, Switch} from "react-router-dom";
 import {connect} from "react-redux";
 import {history} from "../../utils/history";
 import {AppRoutes} from "../../const";
+import {getMovies} from "../../reducer/data/selectors";
+import {getAuthorizationStatus} from "../../reducer/user/selectors";
 import MoviePage from "../movie-page/movie-page";
 import Catalog from "../catalog/catalog";
 import FullPlayer from "../full-player/full-player";
@@ -49,8 +51,8 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  movies: state.movies,
-  isAuthorizationRequired: state.isAuthorizationRequired
+  movies: getMovies(state),
+  isAuthorizationRequired: getAuthorizationStatus(state)
 });
 
 export default connect(mapStateToProps)(App);
