@@ -3,6 +3,7 @@ export default [
     id: `f00`,
     title: `The Grand Budapest Hotel`,
     picture: `bg-the-grand-budapest-hotel.jpg`,
+    previewImage: `bg-the-grand-budapest-hotel.jpg`,
     genre: `Drama`,
     year: `2014`,
     poster: `the-grand-budapest-hotel-poster.jpg`,
@@ -11,12 +12,14 @@ export default [
     overview: `Paragraph 1 / Paragraph 2`,
     director: `Wes Andreson`,
     starring: [`Eddie Redmayne`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
-    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
+    previewVideo: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    videoLink: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     id: `f01`,
     title: `Fantastic Beasts: The Crimes of Grindelwald`,
     picture: `fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+    previewImage: `fantastic-beasts-the-crimes-of-grindelwald.jpg`,
     genre: `Adventure`,
     year: `2018`,
     poster: `fantastic-beasts-the-crimes-of-grindelwald.jpg`,
@@ -25,12 +28,14 @@ export default [
     overview: `Paragraph 1 / Paragraph 2`,
     director: `Wes Andreson`,
     starring: [`Eddie Redmayne`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
-    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+    previewVideo: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    videoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     id: `f02`,
     title: `Bohemian Rhapsody`,
     picture: `bohemian-rhapsody.jpg`,
+    previewImage: `bohemian-rhapsody.jpg`,
     genre: `Drama`,
     year: `2018`,
     poster: `bohemian-rhapsody.jpg`,
@@ -39,12 +44,14 @@ export default [
     overview: `Paragraph 1 / Paragraph 2`,
     director: `Bryan Singer`,
     starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
-    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
+    previewVideo: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    videoLink: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     id: `f03`,
     title: `Macbeth`,
     picture: `macbeth.jpg`,
+    previewImage: `macbeth.jpg`,
     genre: `Drama`,
     year: `2010`,
     poster: `macbeth.jpg`,
@@ -53,12 +60,14 @@ export default [
     overview: `Paragraph 1 / Paragraph 2`,
     director: `Wes Andreson`,
     starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
-    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+    previewVideo: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    videoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     id: `f04`,
     title: `Aviator`,
     picture: `aviator.jpg`,
+    previewImage: `aviator.jpg`,
     genre: `Bio`,
     year: `2004`,
     poster: `aviator.jpg`,
@@ -67,12 +76,14 @@ export default [
     overview: `Paragraph 1 / Paragraph 2`,
     director: `Martin Scorcese`,
     starring: [`Leonardo DiCaprio`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
-    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
+    previewVideo: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    videoLink: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     id: `f05`,
     title: `We need to talk about Kevin`,
     picture: `we-need-to-talk-about-kevin.jpg`,
+    previewImage: `we-need-to-talk-about-kevin.jpg`,
     genre: `Mystery`,
     year: `2011`,
     poster: `we-need-to-talk-about-kevin.jpg`,
@@ -81,12 +92,14 @@ export default [
     overview: `Paragraph 1 / Paragraph 2`,
     director: `Lynne Ramsy`,
     starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
-    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+    previewVideo: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    videoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     id: `f06`,
     title: `What We Do in the Shadows`,
     picture: `what-we-do-in-the-shadows.jpg`,
+    previewImage: `what-we-do-in-the-shadows.jpg`,
     genre: `Horror`,
     year: `2014`,
     poster: `what-we-do-in-the-shadows.jpg`,
@@ -95,12 +108,14 @@ export default [
     overview: `Paragraph 1 / Paragraph 2`,
     director: `John Bill`,
     starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
-    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
+    previewVideo: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    videoLink: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     id: `f07`,
     title: `Revenant`,
     picture: `revenant.jpg`,
+    previewImage: `revenant.jpg`,
     genre: `Horror`,
     year: `2012`,
     poster: `revenant.jpg`,
@@ -109,12 +124,14 @@ export default [
     overview: `Paragraph 1 / Paragraph 2`,
     director: `Wes Andreson`,
     starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
-    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+    previewVideo: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    videoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     id: `f08`,
     title: `Dardjeeling Limited`,
     picture: `dardjeeling-limited.jpg`,
+    previewImage: `dardjeeling-limited.jpg`,
     genre: `Comedy`,
     year: `2007`,
     poster: `dardjeeling-limited.jpg`,
@@ -123,12 +140,14 @@ export default [
     overview: `Paragraph 1 / Paragraph 2`,
     director: `Wes Anderson`,
     starring: [`Jason Schwartzman`, `Adrien Brody`],
-    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+    previewVideo: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    videoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     id: `f09`,
     title: `Johnny English`,
     picture: `johnny-english.jpg`,
+    previewImage: `johnny-english.jpg`,
     genre: `Comedy`,
     year: `2003`,
     poster: `johnny-english.jpg`,
@@ -137,6 +156,7 @@ export default [
     overview: `Paragraph 1 / Paragraph 2`,
     director: `Peter Howitt`,
     starring: [`Rowan Atkinson`, `Ben Miller`],
-    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+    previewVideo: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    videoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   }
 ];

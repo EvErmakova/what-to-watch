@@ -9,7 +9,7 @@ const MovieCardHead = ({movie, pageType}) => {
   const MoviePoster = () => {
     return (
       <div className="movie-card__poster">
-        <img src={`/img/${poster}`} alt={title} width="218" height="327"/>
+        <img src={poster} alt={title} width="218" height="327"/>
       </div>
     );
   };
@@ -17,7 +17,7 @@ const MovieCardHead = ({movie, pageType}) => {
   return (
     <Fragment>
       <div className="movie-card__bg">
-        <img src={`/img/${picture}`} alt={title}/>
+        <img src={picture} alt={title}/>
       </div>
 
       <h1 className="visually-hidden">WTW</h1>

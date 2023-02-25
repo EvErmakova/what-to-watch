@@ -62,9 +62,7 @@ export class SmallMovieCard extends PureComponent {
 SmallMovieCard.propTypes = {
   movie: PropTypes.shape({
     id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    picture: PropTypes.string.isRequired,
-    preview: PropTypes.string.isRequired
+    title: PropTypes.string.isRequired
   }).isRequired,
   history: PropTypes.object.isRequired
 };

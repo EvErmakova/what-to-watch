@@ -28,8 +28,8 @@ export default class Player extends PureComponent {
 
     return (
       <video
-        src={movie.preview}
-        poster={`/img/${movie.picture}`}
+        src={movie.previewVideo}
+        poster={movie.previewImage}
         muted
         ref = {this._videoRef}
         width="280" height="175"></video>
@@ -39,8 +39,8 @@ export default class Player extends PureComponent {
 
 Player.propTypes = {
   movie: PropTypes.shape({
-    picture: PropTypes.string.isRequired,
-    preview: PropTypes.string.isRequired,
+    previewImage: PropTypes.string.isRequired,
+    previewVideo: PropTypes.string.isRequired,
   }),
   isPlaying: PropTypes.bool.isRequired
 };

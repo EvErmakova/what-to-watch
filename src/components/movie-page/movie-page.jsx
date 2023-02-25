@@ -21,7 +21,7 @@ const MoviePage = (props) => {
         <div className="movie-card__wrap movie-card__translate-top">
           <div className="movie-card__info">
             <div className="movie-card__poster movie-card__poster--big">
-              <img src={`/img/${movie.poster}`} alt={movie.title} width="218" height="327"/>
+              <img src={movie.poster} alt={movie.title} width="218" height="327"/>
             </div>
 
             <div className="movie-card__desc">

@@ -9,29 +9,33 @@ import Catalog from "../catalog/catalog";
 import FullPlayer from "../full-player/full-player";
 
 const App = ({movies}) => {
-  return (
-    <Router history={history}>
-      <Switch>
-        <Route exact path={AppRoutes.ROOT}>
-          <Catalog />
-        </Route>
+  if (movies.length) {
+    return (
+      <Router history={history}>
+        <Switch>
+          <Route exact path={AppRoutes.ROOT}>
+            <Catalog/>
+          </Route>
 
-        <Route exact path={`${AppRoutes.MOVIE_PAGE}/:movieId`} render={
-          ({match}) => {
-            const movie = movies.find((item) => item.id === match.params.movieId);
-            return (<MoviePage movie={movie} />);
-          }
-        } />
+          <Route exact path={`${AppRoutes.MOVIE_PAGE}/:movieId`} render={
+            ({match}) => {
+              const movie = movies.find((item) => item.id === match.params.movieId);
+              return (<MoviePage movie={movie}/>);
+            }
+          }/>
 
-        <Route exact path={`${AppRoutes.PLAYER}/:movieId`} render={
-          ({match}) => {
-            const movie = movies.find((item) => item.id === match.params.movieId);
-            return (<FullPlayer movie={movie} />);
-          }
-        }/>
-      </Switch>
-    </Router>
-  );
+          <Route exact path={`${AppRoutes.PLAYER}/:movieId`} render={
+            ({match}) => {
+              const movie = movies.find((item) => item.id === match.params.movieId);
+              return (<FullPlayer movie={movie}/>);
+            }
+          }/>
+        </Switch>
+      </Router>
+    );
+  }
+
+  return <div>Загрузка...</div>;
 };
 
 App.propTypes = {

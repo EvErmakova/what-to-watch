@@ -101,7 +101,7 @@ export default class FullPlayer extends PureComponent {
   }
 
   render() {
-    const {title, picture, preview} = this.props.movie;
+    const {title, previewImage, videoLink} = this.props.movie;
     const {isPlaying, duration, currentTime} = this.state;
 
     const elapsedTime = getTimeElapsed(duration, currentTime);
@@ -109,7 +109,7 @@ export default class FullPlayer extends PureComponent {
 
     return (
       <div className="player">
-        <video src={preview} className="player__video" poster={`/img/${picture}`} ref={this._videoRef}></video>
+        <video src={videoLink} className="player__video" poster={previewImage} ref={this._videoRef}></video>
 
         <button type="button" className="player__exit" onClick={this.onExitHandler}>Exit</button>
 
@@ -156,7 +156,7 @@ export default class FullPlayer extends PureComponent {
 FullPlayer.propTypes = {
   movie: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    picture: PropTypes.string.isRequired,
-    preview: PropTypes.string.isRequired
+    previewImage: PropTypes.string.isRequired,
+    videoLink: PropTypes.string.isRequired
   }).isRequired
 };
