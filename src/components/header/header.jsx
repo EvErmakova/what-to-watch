@@ -1,8 +1,12 @@
 import React from "react";
-import Logo from "../logo/logo";
+import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
+import {AppRoutes} from "../../const";
+import {getAuthorizationStatus} from "../../reducer/user/selectors";
+import Logo from "../logo/logo";
 
-const Header = ({isAuth, pageType}) => {
+const Header = ({pageType, isLogin}) => {
   const headerClass = () => {
     switch (pageType) {
       case `user`:
@@ -14,22 +18,34 @@ const Header = ({isAuth, pageType}) => {
     }
   };
 
+  const Avatar = () => (
+    <div className="user-block__avatar">
+      <img src="/img/avatar.jpg" alt="User avatar" width="63" height="63"/>
+    </div>
+  );
+
   return (
     <header className={`page-header ${headerClass()}`}>
       <Logo />
 
-      {isAuth ? <div className="user-block">
-        <div className="user-block__avatar">
-          <img src="/img/avatar.jpg" alt="User avatar" width="63" height="63"/>
+      {pageType === `movie` ?
+        <div className="user-block">
+          {isLogin ? <Avatar /> : <Link to={AppRoutes.LOGIN} className="user-block__link">Sign in</Link>}
         </div>
-      </div> : <h1 className="page-title user-page__title">Sign in</h1>}
+        : <h1 className="page-title user-page__title">Sign in</h1>
+      }
     </header>
   );
 };
 
 Header.propTypes = {
-  isAuth: PropTypes.bool.isRequired,
-  pageType: PropTypes.string
+  pageType: PropTypes.string,
+  isLogin: PropTypes.bool.isRequired,
 };
 
-export default Header;
+const mapStateToProps = (state, ownProps) => ({
+  ownProps,
+  isLogin: getAuthorizationStatus(state)
+});
+
+export default connect(mapStateToProps)(Header);

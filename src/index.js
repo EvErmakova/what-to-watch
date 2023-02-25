@@ -6,6 +6,7 @@ import thunk from "redux-thunk";
 import {compose} from "recompose";
 import reducer from "./reducer";
 import {Operation} from "./reducer/data/data";
+import {Operation as UserOperation} from "./reducer/user/user";
 import {createAPI} from "./api";
 import App from "./components/app/app";
 
@@ -22,6 +23,7 @@ const init = () => {
 
   store.dispatch(Operation.loadMovies());
   store.dispatch(Operation.loadPromo());
+  store.dispatch(UserOperation.checkAuth());
 
   ReactDOM.render(
       <Provider store={store}>

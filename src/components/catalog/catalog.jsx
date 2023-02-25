@@ -18,9 +18,9 @@ const Catalog = (props) => {
     <React.Fragment>
       <section className="movie-card">
         <h1 className="visually-hidden">WTW</h1>
-        <Header isAuth={true} pageType="movie" />
+        <Header pageType="movie" />
 
-        {promo && <MovieCardHead movie={promo} />}
+        {promo.id && <MovieCardHead movie={promo} />}
       </section>
 
       <div className="page-content">

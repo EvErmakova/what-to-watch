@@ -4,7 +4,8 @@ export const similarCount = 4;
 export const AppRoutes = {
   ROOT: `/`,
   MOVIE_PAGE: `/movie-page`,
-  PLAYER: `/player`
+  PLAYER: `/player`,
+  LOGIN: `/login`
 };
 
 export const TextRates = {

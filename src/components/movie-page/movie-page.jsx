@@ -18,7 +18,7 @@ const MoviePage = (props) => {
       <section className="movie-card movie-card--full" style={{backgroundColor: movie.background}}>
         <div className="movie-card__hero">
           <h1 className="visually-hidden">WTW</h1>
-          <Header isAuth={true} pageType="movie" />
+          <Header pageType="movie" />
 
           <MovieCardHead movie={movie} pageType="full" />
         </div>

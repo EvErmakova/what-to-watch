@@ -10,10 +10,11 @@ export const createAPI = (dispatch) => {
 
   const onSuccess = (response) => response;
   const onFail = (err) => {
-    if (err.response.status === 403) {
-      dispatch(ActionCreator.requireAuthorization(true));
+    if (err.response.status === 401) {
+      dispatch(ActionCreator.requireAuthorization(false));
+      return;
     }
-    return err;
+    throw err;
   };
 
   api.interceptors.response.use(onSuccess, onFail);
