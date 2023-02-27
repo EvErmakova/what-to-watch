@@ -8,6 +8,7 @@ import {getMovies} from "../../reducer/data/selectors";
 import {Operation as UserOperation} from "../../reducer/user/user";
 import {getAuthorizationStatus} from "../../reducer/user/selectors";
 import PrivateRoute from "../../hoc/with-private-route";
+import Loader from "../loader/loader";
 import Catalog from "../../pages/catalog/catalog";
 import AuthorizationScreen from "../../pages/authorization-screen/authorization-screen";
 import MoviePage from "../../pages/movie-page/movie-page";
@@ -55,7 +56,7 @@ const App = ({movies, isLogin, login}) => {
         }/>
       </Switch>
     </Router>
-  ) : `Загрузка...`;
+  ) : <Loader />;
 };
 
 App.propTypes = {
