@@ -526,6 +526,9 @@ main {
 .catalog__genres-link {
   display: block;
   color: #DFCF77;
+  background: none;
+  border:none;
+  cursor:pointer;
   text-decoration: none;
   position: relative;
   padding-bottom: 15px;
@@ -1344,7 +1347,7 @@ main {
   display: inline-block;
   vertical-align: top;
   text-decoration: none;
-  color: inherit; }
+  color: #c9b37e; }
 
 .user-block {
   margin-left: auto; }

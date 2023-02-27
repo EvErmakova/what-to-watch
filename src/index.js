@@ -4,6 +4,7 @@ import {createStore, applyMiddleware} from "redux";
 import {Provider} from "react-redux";
 import thunk from "redux-thunk";
 import {compose} from "recompose";
+import {BrowserRouter} from "react-router-dom";
 import reducer from "./reducer";
 import {Operation} from "./reducer/data/data";
 import {Operation as UserOperation} from "./reducer/user/user";
@@ -27,7 +28,9 @@ const init = () => {
 
   ReactDOM.render(
       <Provider store={store}>
-        <App/>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
       </Provider>,
       document.querySelector(`#root`)
   );

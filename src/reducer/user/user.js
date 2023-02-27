@@ -1,10 +1,17 @@
 const ActionType = {
   REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
+  GET_USER: `GET_USER`
 };
 
 const initialState = {
-  isLogin: false
+  isLogin: false,
+  user: {}
 };
+
+const userAdapter = (user) => ({
+  user,
+  avatar: user.avatar_url
+});
 
 const Operation = {
   checkAuth: () => (dispatch, getState, api) => {
@@ -22,7 +29,9 @@ const Operation = {
       email: authData.login,
       password: authData.password,
     })
-      .then(() => {
+      .then((response) => {
+        const getDataFromAdapter = userAdapter(response.data);
+        dispatch(ActionCreator.getUser(getDataFromAdapter));
         dispatch(ActionCreator.requireAuthorization(true));
       })
       .catch((err) => {
@@ -32,18 +41,23 @@ const Operation = {
 };
 
 const ActionCreator = {
-  requireAuthorization: (status) => {
-    return {
-      type: ActionType.REQUIRED_AUTHORIZATION,
-      payload: status,
-    };
-  },
+  requireAuthorization: (status) => ({
+    type: ActionType.REQUIRED_AUTHORIZATION,
+    payload: status,
+  }),
+  getUser: (user) => ({
+    type: ActionType.GET_USER,
+    payload: user
+  })
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.REQUIRED_AUTHORIZATION:
       return Object.assign({}, state, {isLogin: action.payload});
+
+    case ActionType.GET_USER:
+      return Object.assign({}, state, {user: action.payload});
 
     default:
       return state;

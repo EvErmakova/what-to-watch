@@ -1,6 +1,6 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
-import {withRouter} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 import {AppRoutes} from "../../const";
 import Player from "../player/player";
 
@@ -12,16 +12,8 @@ export class SmallMovieCard extends PureComponent {
       isPlaying: false
     };
 
-    this.handlerCardClick = this.handlerCardClick.bind(this);
     this.handlerMouseOver = this.handlerMouseOver.bind(this);
     this.handlerMouseLeave = this.handlerMouseLeave.bind(this);
-  }
-
-  handlerCardClick(evt) {
-    evt.preventDefault();
-    const {movie, history} = this.props;
-    history.push(`${AppRoutes.MOVIE_PAGE}/${movie.id}`);
-    window.scrollTo(0, 0);
   }
 
   handlerMouseOver() {
@@ -41,8 +33,7 @@ export class SmallMovieCard extends PureComponent {
     const {isPlaying} = this.state;
 
     return (
-      <article className="small-movie-card catalog__movies-card"
-        onClick={this.handlerCardClick}
+      <Link to={`${AppRoutes.MOVIE_PAGE}/${movie.id}`} className="small-movie-card catalog__movies-card"
         onMouseOver={this.handlerMouseOver}
         onMouseLeave={this.handlerMouseLeave}
       >
@@ -54,7 +45,7 @@ export class SmallMovieCard extends PureComponent {
             {movie.title}
           </span>
         </h3>
-      </article>
+      </Link>
     );
   }
 }
@@ -63,8 +54,7 @@ SmallMovieCard.propTypes = {
   movie: PropTypes.shape({
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired
-  }).isRequired,
-  history: PropTypes.object.isRequired
+  }).isRequired
 };
 
-export default withRouter(SmallMovieCard);
+export default SmallMovieCard;

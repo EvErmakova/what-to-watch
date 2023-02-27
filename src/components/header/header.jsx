@@ -3,11 +3,11 @@ import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {AppRoutes} from "../../const";
-import {getAuthorizationStatus} from "../../reducer/user/selectors";
+import {getAuthorizationStatus, getUser} from "../../reducer/user/selectors";
 import Logo from "../logo/logo";
 import Breadcrumbs from "../breadcrumbs/breadcrumbs";
 
-const Header = ({pageType, title, isLogin, breadcrumbs}) => {
+const Header = ({pageType, title, isLogin, breadcrumbs, user}) => {
   const headerClass = () => {
     switch (pageType) {
       case `login`:
@@ -22,7 +22,9 @@ const Header = ({pageType, title, isLogin, breadcrumbs}) => {
 
   const Avatar = () => (
     <div className="user-block__avatar">
-      <Link to={AppRoutes.MY_LIST}><img src="/img/avatar.jpg" alt="User avatar" width="63" height="63"/></Link>
+      <Link to={AppRoutes.MY_LIST}>
+        <img src={user.avatar} alt="User avatar" width="63" height="63"/>
+      </Link>
     </div>
   );
 
@@ -47,12 +49,14 @@ Header.propTypes = {
   pageType: PropTypes.string,
   title: PropTypes.string,
   isLogin: PropTypes.bool.isRequired,
-  breadcrumbs: PropTypes.arrayOf(PropTypes.shape({title: PropTypes.string.isRequired, link: PropTypes.string}))
+  breadcrumbs: PropTypes.arrayOf(PropTypes.shape({title: PropTypes.string.isRequired, link: PropTypes.string})),
+  user: PropTypes.shape({avatar: PropTypes.string})
 };
 
 const mapStateToProps = (state, ownProps) => ({
   ownProps,
-  isLogin: getAuthorizationStatus(state)
+  isLogin: getAuthorizationStatus(state),
+  user: getUser(state)
 });
 
 export default connect(mapStateToProps)(Header);

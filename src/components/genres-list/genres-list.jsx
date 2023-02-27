@@ -23,13 +23,13 @@ class GenresList extends PureComponent {
     return (
       <ul className="catalog__genres-list">
         <li className={`catalog__genres-item ${activeGenre === `all` ? `catalog__genres-item--active` : ``}`}>
-          <a href="#" className="catalog__genres-link" onClick={this._onGenreClick} data-genre="all">All genres</a>
+          <button className="catalog__genres-link" onClick={this._onGenreClick} data-genre="all">All genres</button>
         </li>
         {Object.values(genres).map((genre, index) => (
           <li className={`catalog__genres-item ${activeGenre === genre ? `catalog__genres-item--active` : ``}`}
             key={`genre-` + index}
           >
-            <a href="#" className="catalog__genres-link" onClick={this._onGenreClick} data-genre={genre}>{genre}</a>
+            <button className="catalog__genres-link" onClick={this._onGenreClick} data-genre={genre}>{genre}</button>
           </li>
         ))}
       </ul>

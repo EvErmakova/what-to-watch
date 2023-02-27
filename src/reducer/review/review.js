@@ -14,8 +14,7 @@ const Operation = {
   postNewComment: (movieId, commentPost) => (dispatch, getState, api) => {
     dispatch(ActionCreator.setIsCommentLoading(true));
     return api.post(`/comments/${movieId}`, commentPost)
-      .then((response) => {
-        console.log(response.data);
+      .then(() => {
         dispatch(ActionCreator.setIsReviewError(false));
         dispatch(ActionCreator.setIsCommentLoading(false));
         history.goBack();
