@@ -16,7 +16,7 @@ import MyListScreen from "../../pages/my-list-screen/my-list-screen";
 import ReviewScreen from "../../pages/review-screen/review-screen";
 
 const App = ({movies, isLogin, login}) => {
-  return (
+  return movies.length > 0 ? (
     <Router history={history}>
       <Switch>
         <Route exact path={AppRoutes.ROOT}>
@@ -55,7 +55,7 @@ const App = ({movies, isLogin, login}) => {
         }/>
       </Switch>
     </Router>
-  );
+  ) : `Загрузка...`;
 };
 
 App.propTypes = {

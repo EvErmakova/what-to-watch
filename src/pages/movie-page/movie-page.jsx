@@ -1,8 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {getMovies} from "../../reducer/data/selectors";
-import {similarCount} from "../../const";
+import {getSimilarMovies} from "../../reducer/app/selectors";
 import {getRateText} from "../../utils/movie";
 import Header from "../../components/header/header";
 import MovieCardHead from "../../components/movie-card/movie-card-head";
@@ -11,7 +10,6 @@ import Footer from "../../components/footer/footer";
 
 const MoviePage = (props) => {
   const {movies, movie} = props;
-  const similar = movies.filter((item) => item.genre === movie.genre && item.id !== movie.id).slice(0, similarCount);
 
   return (
     <React.Fragment>
@@ -68,7 +66,7 @@ const MoviePage = (props) => {
       <div className="page-content">
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
-          <MoviesList movies={similar} />
+          <MoviesList movies={movies} />
         </section>
 
         <Footer />
@@ -97,7 +95,7 @@ MoviePage.propTypes = {
 
 const MapStateToProps = (state, ownProps) => ({
   ownProps,
-  movies: getMovies(state)
+  movies: getSimilarMovies(state, ownProps.movie)
 });
 
 export default connect(MapStateToProps)(MoviePage);

@@ -4,8 +4,9 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {AppRoutes} from "../../const";
 import {getAuthorizationStatus} from "../../reducer/user/selectors";
+import {Operation} from "../../reducer/data/data";
 
-const MovieCardButtons = ({movieId, isFavorite, isLogin}) => {
+const MovieCardButtons = ({movieId, isFavorite, isLogin, pageType, onToggleFavorite}) => {
   return (
     <div className="movie-card__buttons">
       <Link to={`${AppRoutes.PLAYER}/${movieId}`} className="btn btn--play movie-card__button" type="button">
@@ -17,7 +18,9 @@ const MovieCardButtons = ({movieId, isFavorite, isLogin}) => {
 
       {isLogin &&
         <Fragment>
-          <button className="btn btn--list movie-card__button" type="button">
+          <button className="btn btn--list movie-card__button" type="button"
+            onClick={() => onToggleFavorite(movieId, !isFavorite, pageType)}
+          >
             {isFavorite ?
               <svg viewBox="0 0 18 14" width="18" height="14">
                 <use xlinkHref="#in-list"></use>
@@ -43,6 +46,8 @@ MovieCardButtons.propTypes = {
   movieId: PropTypes.string.isRequired,
   isFavorite: PropTypes.bool.isRequired,
   isLogin: PropTypes.bool.isRequired,
+  onToggleFavorite: PropTypes.func.isRequired,
+  pageType: PropTypes.string.isRequired
 };
 
 const mapStateToProps = (state, ownProps) => ({
@@ -50,4 +55,10 @@ const mapStateToProps = (state, ownProps) => ({
   isLogin: getAuthorizationStatus(state)
 });
 
-export default connect(mapStateToProps)(MovieCardButtons);
+const mapDispatchToProps = (dispatch) => ({
+  onToggleFavorite: (movieId, isFavorite, pageType) => {
+    dispatch(Operation.setFavoriteMovie(movieId, isFavorite, pageType));
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MovieCardButtons);

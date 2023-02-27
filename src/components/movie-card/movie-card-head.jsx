@@ -26,7 +26,7 @@ const MovieCardHead = ({movie, pageType}) => {
                 <span className="movie-card__year">{year}</span>
               </p>
 
-              <MovieCardButtons movieId={id} isFavorite={isFavorite}/>
+              <MovieCardButtons movieId={id} isFavorite={isFavorite} pageType={pageType} />
             </div>
           </div>
         </div>
@@ -45,7 +45,7 @@ MovieCardHead.propTypes = {
     poster: PropTypes.string.isRequired,
     isFavorite: PropTypes.bool.isRequired
   }).isRequired,
-  pageType: PropTypes.string
+  pageType: PropTypes.string.isRequired
 };
 
 export default MovieCardHead;

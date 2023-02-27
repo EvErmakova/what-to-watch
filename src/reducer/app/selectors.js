@@ -1,5 +1,6 @@
-import NameSpace from "../name-spaces";
 import {createSelector} from "reselect";
+import NameSpace from "../name-spaces";
+import {similarCount} from "../../const";
 import {getMovies} from "../data/selectors";
 
 const NAME_SPACE = NameSpace.APP;
@@ -28,9 +29,8 @@ export const getGenres = createSelector(
     (movies) => [...new Set(movies.map((item) => item.genre))]
 );
 
-export const getFavoritesMovies = createSelector(
-    getMovies,
-    (movies) => {
-      return movies.filter((item) => item.isFavorite);
-    }
-);
+export const getSimilarMovies = (state, movie) => {
+  const movies = getMovies(state);
+
+  return movies.filter((item) => item.genre === movie.genre && item.id !== movie.id).slice(0, similarCount);
+};

@@ -18,17 +18,17 @@ const Operation = {
   },
 
   login: (authData) => (dispatch, getState, api) => {
-    return api
-      .post(`/login`,
-          {
-            email: authData.login,
-            password: authData.password,
-          }
-      )
+    return api.post(`/login`, {
+      email: authData.login,
+      password: authData.password,
+    })
       .then(() => {
         dispatch(ActionCreator.requireAuthorization(true));
+      })
+      .catch((err) => {
+        throw err;
       });
-  },
+  }
 };
 
 const ActionCreator = {

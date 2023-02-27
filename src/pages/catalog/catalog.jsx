@@ -17,7 +17,7 @@ const Catalog = (props) => {
       <section className="movie-card">
         <Header pageType="movie" />
 
-        {promo.id && <MovieCardHead movie={promo} />}
+        {promo.id && <MovieCardHead movie={promo} pageType="promo" />}
       </section>
 
       <div className="page-content">
