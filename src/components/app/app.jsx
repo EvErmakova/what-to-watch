@@ -1,8 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {Router, Route, Switch, Redirect} from "react-router-dom";
+import {Route, Switch, Redirect} from "react-router-dom";
 import {connect} from "react-redux";
-import {history} from "../../utils/history";
 import {AppRoutes} from "../../const";
 import {getMovies} from "../../reducer/data/selectors";
 import {Operation as UserOperation} from "../../reducer/user/user";
@@ -19,46 +18,44 @@ import ReviewScreen from "../../pages/review-screen/review-screen";
 
 const App = ({movies, isLogin, login}) => {
   return movies.length > 0 ? (
-    <Router history={history}>
-      <ScrollToTop>
-        <Switch>
-          <Route exact path={AppRoutes.ROOT}>
-            <Catalog />
-          </Route>
+    <ScrollToTop>
+      <Switch>
+        <Route exact path={AppRoutes.ROOT}>
+          <Catalog />
+        </Route>
 
-          <Route exact path={AppRoutes.LOGIN}
-            render={() => isLogin ? <Redirect to={AppRoutes.ROOT}/> : <AuthorizationScreen login={login}/>}
-          />
+        <Route exact path={AppRoutes.LOGIN}
+          render={() => isLogin ? <Redirect to={AppRoutes.ROOT}/> : <AuthorizationScreen login={login}/>}
+        />
 
-          <Route exact path={`${AppRoutes.MOVIE_PAGE}/:movieId`} render={
-            ({match}) => {
-              const movie = movies.find((item) => item.id === match.params.movieId);
-              return (<MoviePage movie={movie}/>);
-            }
-          }/>
+        <Route exact path={`${AppRoutes.MOVIE_PAGE}/:movieId`} render={
+          ({match}) => {
+            const movie = movies.find((item) => item.id === match.params.movieId);
+            return (<MoviePage movie={movie}/>);
+          }
+        }/>
 
-          <Route exact path={`${AppRoutes.PLAYER}/:movieId`} render={
-            ({match}) => {
-              const movie = movies.find((item) => item.id === match.params.movieId);
-              return (<FullPlayer movie={movie}/>);
-            }
-          }/>
+        <Route exact path={`${AppRoutes.PLAYER}/:movieId`} render={
+          ({match}) => {
+            const movie = movies.find((item) => item.id === match.params.movieId);
+            return (<FullPlayer movie={movie}/>);
+          }
+        }/>
 
-          <Route exact path={AppRoutes.MY_LIST}
-            render={() => isLogin ? <MyListScreen /> : <Redirect to={AppRoutes.LOGIN}/>}
-          />
+        <Route exact path={AppRoutes.MY_LIST}
+          render={() => isLogin ? <MyListScreen /> : <Redirect to={AppRoutes.LOGIN}/>}
+        />
 
-          <PrivateRoute exact path={AppRoutes.MY_LIST} render={() => <Redirect to={AppRoutes.LOGIN}/>} />
+        <PrivateRoute exact path={AppRoutes.MY_LIST} render={() => <Redirect to={AppRoutes.LOGIN}/>} />
 
-          <PrivateRoute exact path={`${AppRoutes.MOVIE_PAGE}/:movieId${AppRoutes.ADD_REVIEW}`} render={
-            ({match}) => {
-              const movie = movies.find((item) => item.id === match.params.movieId);
-              return <ReviewScreen movie={movie} />;
-            }
-          }/>
-        </Switch>
-      </ScrollToTop>
-    </Router>
+        <PrivateRoute exact path={`${AppRoutes.MOVIE_PAGE}/:movieId${AppRoutes.ADD_REVIEW}`} render={
+          ({match}) => {
+            const movie = movies.find((item) => item.id === match.params.movieId);
+            return <ReviewScreen movie={movie} />;
+          }
+        }/>
+      </Switch>
+    </ScrollToTop>
   ) : <Loader />;
 };
 
