@@ -17,7 +17,6 @@ const MoviePage = (props) => {
     <React.Fragment>
       <section className="movie-card movie-card--full" style={{backgroundColor: movie.background}}>
         <div className="movie-card__hero">
-          <h1 className="visually-hidden">WTW</h1>
           <Header pageType="movie" />
 
           <MovieCardHead movie={movie} pageType="full" />

@@ -5,8 +5,9 @@ import {connect} from "react-redux";
 import {AppRoutes} from "../../const";
 import {getAuthorizationStatus} from "../../reducer/user/selectors";
 import Logo from "../logo/logo";
+import Breadcrumbs from "../breadcrumbs/breadcrumbs";
 
-const Header = ({pageType, title, isLogin}) => {
+const Header = ({pageType, title, isLogin, breadcrumbs}) => {
   const headerClass = () => {
     switch (pageType) {
       case `login`:
@@ -29,7 +30,9 @@ const Header = ({pageType, title, isLogin}) => {
     <header className={`page-header ${headerClass()}`}>
       <Logo />
 
-      {title && <h1 className="page-title user-page__title">{title}</h1>}
+      {breadcrumbs && <Breadcrumbs breadcrumbs={breadcrumbs}/>}
+
+      {title ? <h1 className="page-title user-page__title">{title}</h1> : <h1 className="visually-hidden">WTW</h1>}
 
       {pageType !== `login` &&
         <div className="user-block">
@@ -44,6 +47,7 @@ Header.propTypes = {
   pageType: PropTypes.string,
   title: PropTypes.string,
   isLogin: PropTypes.bool.isRequired,
+  breadcrumbs: PropTypes.arrayOf(PropTypes.shape({title: PropTypes.string.isRequired, link: PropTypes.string}))
 };
 
 const mapStateToProps = (state, ownProps) => ({

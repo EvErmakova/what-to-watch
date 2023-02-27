@@ -80,10 +80,9 @@ export default class FullPlayer extends PureComponent {
   onProgressHandler(evt) {
     const currentTime = Math.trunc(evt.target.value * this.state.duration / 100);
 
-    this.setState((prevState) => ({
-      prevState,
+    this.setState({
       currentTime
-    }));
+    });
 
     this._videoRef.current.currentTime = currentTime;
   }

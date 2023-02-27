@@ -3,10 +3,11 @@ export const similarCount = 4;
 
 export const AppRoutes = {
   ROOT: `/`,
-  MOVIE_PAGE: `/movie`,
+  MOVIE_PAGE: `/movies`,
   PLAYER: `/player`,
   LOGIN: `/login`,
-  MY_LIST: `/my-list`
+  MY_LIST: `/my-list`,
+  ADD_REVIEW: `/review`
 };
 
 export const TextRates = {

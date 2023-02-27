@@ -1,9 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../reducer/app/app";
 import {getPromo} from "../../reducer/data/selectors";
-import {getMoviesByGenre, getMaxMoviesAmount} from "../../reducer/app/selectors";
+import {getMoviesByGenre} from "../../reducer/app/selectors";
 import Header from "../../components/header/header";
 import MovieCardHead from "../../components/movie-card/movie-card-head";
 import GenresList from "../../components/genres-list/genres-list";
@@ -16,7 +15,6 @@ const Catalog = (props) => {
   return (
     <React.Fragment>
       <section className="movie-card">
-        <h1 className="visually-hidden">WTW</h1>
         <Header pageType="movie" />
 
         {promo.id && <MovieCardHead movie={promo} />}

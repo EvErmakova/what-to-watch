@@ -411,7 +411,10 @@ main {
   cursor: pointer;
   -webkit-transition: opacity 0.2s;
   transition: opacity 0.2s; }
-  .add-review__btn:hover {
+  .add-review__btn:disabled {
+    cursor: default;
+    opacity: 0.2; }
+  .add-review__btn:not(:disabled):hover {
     opacity: 0.5; }
 
 .breadcrumbs {

@@ -7,11 +7,13 @@ import {AppRoutes} from "../../const";
 import {getMovies} from "../../reducer/data/selectors";
 import {Operation as UserOperation} from "../../reducer/user/user";
 import {getAuthorizationStatus} from "../../reducer/user/selectors";
+import PrivateRoute from "../../hoc/with-private-route";
 import Catalog from "../../pages/catalog/catalog";
 import AuthorizationScreen from "../../pages/authorization-screen/authorization-screen";
 import MoviePage from "../../pages/movie-page/movie-page";
 import FullPlayer from "../../pages/full-player/full-player";
 import MyListScreen from "../../pages/my-list-screen/my-list-screen";
+import ReviewScreen from "../../pages/review-screen/review-screen";
 
 const App = ({movies, isLogin, login}) => {
   return (
@@ -42,6 +44,15 @@ const App = ({movies, isLogin, login}) => {
         <Route exact path={AppRoutes.MY_LIST}
           render={() => isLogin ? <MyListScreen /> : <Redirect to={AppRoutes.LOGIN}/>}
         />
+
+        <PrivateRoute exact path={AppRoutes.MY_LIST} render={() => <Redirect to={AppRoutes.LOGIN}/>} />
+
+        <PrivateRoute exact path={`${AppRoutes.MOVIE_PAGE}/:movieId${AppRoutes.ADD_REVIEW}`} render={
+          ({match}) => {
+            const movie = movies.find((item) => item.id === match.params.movieId);
+            return <ReviewScreen movie={movie} />;
+          }
+        }/>
       </Switch>
     </Router>
   );

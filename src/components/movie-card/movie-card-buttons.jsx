@@ -1,9 +1,9 @@
 import React, {Fragment} from "react";
 import {Link} from "react-router-dom";
-import {AppRoutes} from "../../const";
 import PropTypes from "prop-types";
-import {getAuthorizationStatus} from "../../reducer/user/selectors";
 import {connect} from "react-redux";
+import {AppRoutes} from "../../const";
+import {getAuthorizationStatus} from "../../reducer/user/selectors";
 
 const MovieCardButtons = ({movieId, isFavorite, isLogin}) => {
   return (
@@ -30,7 +30,9 @@ const MovieCardButtons = ({movieId, isFavorite, isLogin}) => {
             <span>My list</span>
           </button>
 
-          <a href="add-review.html" className="btn movie-card__button">Add review</a>
+          <Link to={`${AppRoutes.MOVIE_PAGE}/${movieId}${AppRoutes.ADD_REVIEW}`} className="btn movie-card__button">
+            Add review
+          </Link>
         </Fragment>
       }
     </div>

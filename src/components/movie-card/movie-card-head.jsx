@@ -1,17 +1,10 @@
 import React, {Fragment} from "react";
 import PropTypes from "prop-types";
 import MovieCardButtons from "./movie-card-buttons";
+import MoviePoster from "./movie-card-poster";
 
 const MovieCardHead = ({movie, pageType}) => {
   const {title, picture, genre, year, poster, id, isFavorite} = movie;
-
-  const MoviePoster = () => {
-    return (
-      <div className="movie-card__poster">
-        <img src={poster} alt={title} width="218" height="327"/>
-      </div>
-    );
-  };
 
   return (
     <Fragment>
@@ -19,21 +12,25 @@ const MovieCardHead = ({movie, pageType}) => {
         <img src={picture} alt={title}/>
       </div>
 
-      <div className="movie-card__wrap">
-        <div className="movie-card__info">
-          {pageType !== `full` && <MoviePoster /> }
+      {pageType === `review` ? (
+        <MoviePoster poster={poster} title={title} isSmall={true}/>
+      ) : (
+        <div className="movie-card__wrap">
+          <div className="movie-card__info">
+            {pageType !== `full` && <MoviePoster poster={poster} title={title}/>}
 
-          <div className="movie-card__desc">
-            <h2 className="movie-card__title">{title}</h2>
-            <p className="movie-card__meta">
-              <span className="movie-card__genre">{genre}</span>
-              <span className="movie-card__year">{year}</span>
-            </p>
+            <div className="movie-card__desc">
+              <h2 className="movie-card__title">{title}</h2>
+              <p className="movie-card__meta">
+                <span className="movie-card__genre">{genre}</span>
+                <span className="movie-card__year">{year}</span>
+              </p>
 
-            <MovieCardButtons movieId={id} isFavorite={isFavorite} />
+              <MovieCardButtons movieId={id} isFavorite={isFavorite}/>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </Fragment>
   );
 };
