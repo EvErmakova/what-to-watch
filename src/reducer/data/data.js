@@ -74,14 +74,12 @@ const Operation = {
     })
       .then((response) => {
         const dataFromAdapter = movieAdapter(response.data);
-        switch (pageType) {
-          case `promo`:
-            dispatch(ActionCreator.getPromo(dataFromAdapter));
-            break;
 
-          default:
-            dispatch(ActionCreator.loadMovie(dataFromAdapter));
+        if (pageType === `promo`) {
+          dispatch(ActionCreator.getPromo(dataFromAdapter));
         }
+
+        dispatch(ActionCreator.loadMovie(dataFromAdapter));
       })
       .catch((err) => {
         throw err;
