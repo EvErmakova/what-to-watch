@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {getFormattedDate} from "../../utils/movie";
 
 const Review = ({comment}) => {
   return (
@@ -9,7 +10,7 @@ const Review = ({comment}) => {
 
         <footer className="review__details">
           <cite className="review__author">{comment.user.name}</cite>
-          <time className="review__date" dateTime="2016-12-24">December 24, 2016</time>
+          <time className="review__date" dateTime={comment.date}>{getFormattedDate(comment.date)}</time>
         </footer>
       </blockquote>
 
@@ -20,12 +21,11 @@ const Review = ({comment}) => {
 
 Review.propTypes = {
   comment: PropTypes.shape({
-    id: PropTypes.number,
-    rating: PropTypes.number,
-    comment: PropTypes.string,
-    date: PropTypes.string,
+    rating: PropTypes.number.isRequired,
+    comment: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
     user: PropTypes.shape({
-      name: PropTypes.string
+      name: PropTypes.string.isRequired
     })
   }).isRequired
 };

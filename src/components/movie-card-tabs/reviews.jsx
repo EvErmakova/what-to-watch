@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import {getIsCommentLoading, getMovieComments} from "../../reducer/review/selectors";
 import {Operation} from "../../reducer/review/review";
-import Review from "../../pages/review-screen/review";
+import Review from "./review";
 
 class Reviews extends PureComponent {
   constructor(props) {

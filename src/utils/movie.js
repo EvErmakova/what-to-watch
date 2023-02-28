@@ -1,4 +1,5 @@
 import {TextRates} from "../const";
+import moment from "moment";
 
 export const getRateText = (value) => {
   if (value <= 3) {
@@ -28,4 +29,11 @@ export const getFormattedRuntime = (runtime) => {
   };
 
   return `${getHours()} ${getMinutes()}`;
+};
+
+export const getFormattedDate = (date) => {
+  if (date) {
+    return moment(date).format(`MMMM D, YYYY`);
+  }
+  return null;
 };
