@@ -734,6 +734,10 @@ main {
   line-height: 45px;
   margin: 0 0 7px; }
 
+.movie-card__link {
+  color: #eee5b5;
+  text-decoration: none; }
+
 .movie-card__meta {
   margin: 0;
   display: -webkit-box;
@@ -851,6 +855,9 @@ main {
 .movie-nav__link {
   display: block;
   color: #EEE5B5;
+  background: none;
+  border: none;
+  cursor: pointer;
   text-decoration: none;
   position: relative;
   padding-bottom: 19px; }

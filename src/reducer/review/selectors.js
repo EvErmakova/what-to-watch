@@ -9,3 +9,7 @@ export const getIsCommentLoading = (state) => {
 export const getIsReviewError = (state) => {
   return state[NAME_SPACE].isReviewError;
 };
+
+export const getMovieComments = (state) => {
+  return state[NAME_SPACE].comments;
+};

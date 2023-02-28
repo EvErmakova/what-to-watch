@@ -1,7 +1,8 @@
 import React, {Fragment} from "react";
 import PropTypes from "prop-types";
-import MovieCardButtons from "./movie-card-buttons";
-import MoviePoster from "./movie-card-poster";
+import {Link} from "react-router-dom";
+import {AppRoutes} from "../../const";
+import {MovieCardButtons, MovieCardPoster} from "./index";
 
 const MovieCardHead = ({movie, pageType}) => {
   const {title, picture, genre, year, poster, id, isFavorite} = movie;
@@ -13,14 +14,16 @@ const MovieCardHead = ({movie, pageType}) => {
       </div>
 
       {pageType === `review` ? (
-        <MoviePoster poster={poster} title={title} isSmall={true}/>
+        <MovieCardPoster poster={poster} title={title} isSmall={true}/>
       ) : (
         <div className="movie-card__wrap">
           <div className="movie-card__info">
-            {pageType !== `full` && <MoviePoster poster={poster} title={title}/>}
+            {pageType !== `full` && <MovieCardPoster poster={poster} title={title}/>}
 
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">{title}</h2>
+              <h2 className="movie-card__title">
+                <Link className="movie-card__link" to={`${AppRoutes.MOVIE_PAGE}/${movie.id}`}>{title}</Link>
+              </h2>
               <p className="movie-card__meta">
                 <span className="movie-card__genre">{genre}</span>
                 <span className="movie-card__year">{year}</span>

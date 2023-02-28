@@ -1,3 +1,5 @@
+import {ApiRoutes} from "../../const";
+
 const ActionType = {
   REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
   GET_USER: `GET_USER`
@@ -15,7 +17,7 @@ const userAdapter = (user) => ({
 
 const Operation = {
   checkAuth: () => (dispatch, getState, api) => {
-    return api.get(`/login`)
+    return api.get(ApiRoutes.LOGIN)
       .then(() => {
         dispatch(ActionCreator.requireAuthorization(false));
       })
@@ -25,7 +27,7 @@ const Operation = {
   },
 
   login: (authData) => (dispatch, getState, api) => {
-    return api.post(`/login`, {
+    return api.post(ApiRoutes.LOGIN, {
       email: authData.login,
       password: authData.password,
     })

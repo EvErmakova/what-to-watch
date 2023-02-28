@@ -2,7 +2,8 @@ import React, {PureComponent} from "react";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import {ActionCreator} from "../../reducer/app/app";
-import {getGenre, getGenres} from "../../reducer/app/selectors";
+import {getGenre} from "../../reducer/app/selectors";
+import {getGenres} from "../../reducer/data/selectors";
 
 class GenresList extends PureComponent {
   constructor(props) {

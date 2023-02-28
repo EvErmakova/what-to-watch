@@ -10,10 +10,24 @@ export const AppRoutes = {
   ADD_REVIEW: `/review`
 };
 
+export const ApiRoutes = {
+  FILMS: `/films`,
+  PROMO: `/films/promo`,
+  FAVORITE: `/favorite`,
+  REVIEWS: `/comments`,
+  LOGIN: `/login`
+};
+
 export const TextRates = {
   BAD: `Bad`,
   NORMAL: `Normal`,
   GOOD: `Good`,
   VERY_GOOD: `Very Good`,
   AWESOME: `Awesome`
+};
+
+export const MovieTabNames = {
+  OVERVIEW: `Overview`,
+  DETAILS: `Details`,
+  REVIEWS: `Reviews`,
 };

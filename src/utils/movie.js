@@ -15,3 +15,17 @@ export const getRateText = (value) => {
   }
   return TextRates.AWESOME;
 };
+
+export const getFormattedRuntime = (runtime) => {
+  const getHours = () => {
+    const hours = Math.trunc(runtime / 60);
+    return hours > 0 ? `${hours}h` : ``;
+  };
+
+  const getMinutes = () => {
+    const minutes = runtime % 60;
+    return minutes > 0 ? `${minutes}m` : ``;
+  };
+
+  return `${getHours()} ${getMinutes()}`;
+};

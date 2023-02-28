@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import {getPromo} from "../../reducer/data/selectors";
 import {getMoviesByGenre} from "../../reducer/app/selectors";
 import Header from "../../components/header/header";
-import MovieCardHead from "../../components/movie-card/movie-card-head";
+import {MovieCardHead} from "../../components/movie-card";
 import GenresList from "../../components/genres-list/genres-list";
 import MoviesList from "../../components/movies-list/movies-list";
 import Footer from "../../components/footer/footer";

@@ -1,8 +1,10 @@
+import {ApiRoutes} from "../../const";
+
 const ActionType = {
   LOAD_MOVIES: `LOAD_MOVIES`,
-  LOAD_MOVIE: `LOAD_MOVIE`,
+  UPDATE_MOVIE: `UPDATE_MOVIE`,
   GET_PROMO: `GET_PROMO`,
-  LOAD_FAVORITE_MOVIES: `LOAD_FAVORITE_MOVIES`,
+  LOAD_FAVORITE_MOVIES: `LOAD_FAVORITE_MOVIES`
 };
 
 const initialState = {
@@ -24,6 +26,7 @@ const movieAdapter = (movie) => ({
   poster: movie.poster_image,
   ratingScore: movie.rating,
   ratingCount: movie.scores_count,
+  runTime: movie.run_time,
   overview: movie.description,
   director: movie.director,
   starring: movie.starring,
@@ -36,7 +39,7 @@ const movieAdapter = (movie) => ({
 
 const Operation = {
   loadMovies: () => (dispatch, getState, api) => {
-    return api.get(`/films`)
+    return api.get(ApiRoutes.FILMS)
       .then((response) => {
         const getDataFromAdapter = adapter(response.data);
         dispatch(ActionCreator.loadMovies(getDataFromAdapter));
@@ -47,17 +50,18 @@ const Operation = {
   },
 
   loadPromo: () => (dispatch, getState, api) => {
-    return api.get(`/films/promo`).then((response) => {
-      const dataFromAdapter = movieAdapter(response.data);
-      dispatch(ActionCreator.getPromo(dataFromAdapter));
-    })
-    .catch((err) => {
-      throw err;
-    });
+    return api.get(ApiRoutes.PROMO)
+      .then((response) => {
+        const dataFromAdapter = movieAdapter(response.data);
+        dispatch(ActionCreator.getPromo(dataFromAdapter));
+      })
+      .catch((err) => {
+        throw err;
+      });
   },
 
   loadFavoriteMovies: () => (dispatch, getState, api) => {
-    return api.get(`/favorite`)
+    return api.get(ApiRoutes.FAVORITE)
       .then((response) => {
         const getDataFromAdapter = adapter(response.data);
         dispatch(ActionCreator.loadFavoriteMovies(getDataFromAdapter));
@@ -69,7 +73,7 @@ const Operation = {
 
   setFavoriteMovie: (MovieId, isFavorite, pageType) => (dispatch, getState, api) => {
     const status = isFavorite ? 1 : 0;
-    return api.post(`/favorite/${MovieId}/${status}`, {
+    return api.post(`${ApiRoutes.FAVORITE}/${MovieId}/${status}`, {
       [`is_favorite`]: isFavorite,
     })
       .then((response) => {
@@ -79,12 +83,12 @@ const Operation = {
           dispatch(ActionCreator.getPromo(dataFromAdapter));
         }
 
-        dispatch(ActionCreator.loadMovie(dataFromAdapter));
+        dispatch(ActionCreator.updateMovie(dataFromAdapter));
       })
       .catch((err) => {
         throw err;
       });
-  },
+  }
 };
 
 const ActionCreator = {
@@ -92,8 +96,8 @@ const ActionCreator = {
     type: ActionType.LOAD_MOVIES,
     payload: movies
   }),
-  loadMovie: (movie) => ({
-    type: ActionType.LOAD_MOVIE,
+  updateMovie: (movie) => ({
+    type: ActionType.UPDATE_MOVIE,
     payload: movie
   }),
   getPromo: (movie) => ({
@@ -111,7 +115,7 @@ const reducer = (state = initialState, action) => {
     case ActionType.LOAD_MOVIES:
       return Object.assign({}, state, {movies: action.payload});
 
-    case ActionType.LOAD_MOVIE:
+    case ActionType.UPDATE_MOVIE:
       const movie = action.payload;
       const movieIdx = state.movies.findIndex((item) => item.id === movie.id);
       const movies = [...state.movies.slice(0, movieIdx), movie, ...state.movies.slice(movieIdx + 1)];
