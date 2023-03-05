@@ -42,11 +42,7 @@ const App = ({movies, isLogin, login}) => {
           }
         }/>
 
-        <Route exact path={AppRoutes.MY_LIST}
-          render={() => isLogin ? <MyListScreen /> : <Redirect to={AppRoutes.LOGIN}/>}
-        />
-
-        <PrivateRoute exact path={AppRoutes.MY_LIST} render={() => <Redirect to={AppRoutes.LOGIN}/>} />
+        <PrivateRoute exact path={AppRoutes.MY_LIST} render={() => <MyListScreen />} />
 
         <PrivateRoute exact path={`${AppRoutes.MOVIE_PAGE}/:movieId${AppRoutes.ADD_REVIEW}`} render={
           ({match}) => {
